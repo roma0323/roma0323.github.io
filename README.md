@@ -62,7 +62,7 @@
 ## Website Demo 
 
 <div align="center">
-    <a href="[https://hapiwangy.github.io/final_project_datavisualization/](https://github.com/roma0323/roma0323.github.io)">
+    <a href="[[https://hapiwangy.github.io/final_project_datavisualization/](https://github.com/roma0323/roma0323.github.io)](https://roma0323.github.io/)">
         <img src="./images/demo.png" alt="Demo" width="600px;">
     </a>
 </div>
