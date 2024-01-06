@@ -62,7 +62,7 @@
 ## Website Demo 
 
 <div align="center">
-    <a href="https://roma0323.github.io)">
+    <a href="https://roma0323.github.io">
         <img src="./images/demo.png" alt="Demo" width="600px;">
     </a>
 </div>
