@@ -6,7 +6,7 @@
 - Topic: OTT Platform Analysis
 
 <div align="center"> 
-    <img src="./images/home.jpg" width="600px;" alt=""/>
+    <img src="./images/home.png" width="600px;" alt=""/>
 </div>
 
 ## Who are we?
@@ -63,7 +63,7 @@
 
 <div align="center">
     <a href="https://roma0323.github.io">
-        <img src="./images/home.png" alt="Demo" width="600px;">
+        <img src="./images/demo.png" alt="Demo" width="600px;">
     </a>
 </div>
 
