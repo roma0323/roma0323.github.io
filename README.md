@@ -2,9 +2,8 @@
 
 ## Project Information
 - Course Name: Data Visualization
-- Course Schedule: Summer 2023
-- Assignment Format: Group Project (6-person groups)
-- Topic: Game Data Analysis
+- Assignment Format: Group Project (5-person groups)
+- Topic: OTT Platform Analysis
 
 <div align="center"> 
     <img src="./images/home.jpg" width="600px;" alt=""/>
@@ -12,10 +11,10 @@
 
 ## Who are we?
 
-我們是來自不同科系的學生，包含了資工、生醫、機械、大氣科學領域。我們想透過我們原先的背景知識，並且結合課堂所學完成一份資料視覺化的期末專案。  
+我們是來自資管、資工的學生，我們想透過我們原先的背景知識，並且結合課堂所學完成一份資料視覺化的期末專案。  
 
 ## Why to Choose this dataset?
-經過討論我們決定接續組內同學的期中報告 —「電玩遊戲」做更多的探討以及分析。這份資料集是來自於 [Kaggle](https://www.kaggle.com/datasets/sidtwr/videogames-sales-dataset) 的資料集。在這份資料集裡面有非常多年度的資料，並且記錄著 13 個種類別的遊戲，以及 31 種平台提供的遊戲。
+經過討論我們決定選擇我們有共興趣的OTT（Over-The-Top）平台，例如Netflix、Disney+、Hulu和Prime。我們將使用的資料集包含了這些平台上可用的電影和電視節目的信息，讓我們比較不同喜好的觀眾應該買哪家OTT平台。
 
 ## Divide and Conquer
 <table style="margin-top: 5%; margin-left: 2.5%; margin-right: 2.5%; width: 95%;">
@@ -33,34 +32,29 @@
 			<td>Contribution</td>
 		</tr>
 		<tr>
-			<td><b>林群賀（組長）</b></td>
-			<td>109601003</td>
-			<td>Bar Chart Race, Web Page Beautification, Project Management<td>
+			<td><b>陳睿弘</b></td>
+			<td>110403519</td>
+			<td>{分工}<td>
 		</tr>
 		<tr>
-			<td>許弘奕</td>
-			<td>110502009</td>
-			<td>Line Chart、Bar Chart</td>
+			<td>王冠程</td>
+			<td>{改學號}</td>
+			<td>{分工}</td>
 		</tr>
 		<tr>
-			<td>陳俊宇</td>
-			<td>110502534</td>
-			<td>Stack Bar Chart、Bar Chart、Web Page Beautification</td>
+			<td>李晨瑜</td>
+			<td>{改學號}</td>
+			<td>{分工}</td>
 		</tr>
 		<tr>
-			<td>王誠煜</td>
-			<td>109502570</td>
-			<td>負責前三張圖的基本繪製和更換選單，網頁排版，網頁的bug修復，圖片結論歸(1), Project Management</td>
+			<td>李安之</td>
+			<td>{改學號}</td>
+			<td>{分工}</td>
 		</tr>
 		<tr>
-			<td>黃晁慶</td>
-			<td>109303009</td>
-			<td>前三張圖的額外資訊顯示(mouseover時會顯示的額外資訊)、圖片結論的歸納(2)</td>
-		</tr>
-		<tr>
-			<td>陳暐鈞</td>
-			<td>109802521</td>
-			<td>第四張圖的基本繪製、更換選單、額外資訊顯示，圖片結論的歸納(1)</td>
+			<td>廖俊傑</td>
+			<td>{改學號}</td>
+			<td>{分工}</td>
 		</tr>
 	</tbody>
 </table>
@@ -68,7 +62,7 @@
 ## Website Demo 
 
 <div align="center">
-    <a href="https://hapiwangy.github.io/final_project_datavisualization/">
+    <a href="[https://hapiwangy.github.io/final_project_datavisualization/](https://github.com/roma0323/roma0323.github.io)">
         <img src="./images/demo.png" alt="Demo" width="600px;">
     </a>
 </div>
