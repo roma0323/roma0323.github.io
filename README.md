@@ -71,7 +71,7 @@
 ## Contributors
 <table>
   <tr>
-    <td align="center"><a href="https://github.com/roma0323"><img src="https://avatars.githubusercontent.com/u/99786569?v=4" width="100px;" alt=""/><br /><sub><b>1chooo</b></sub></a><br /><a href="https://github.com/roma0323" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/roma0323"><img src="https://avatars.githubusercontent.com/u/54255701?v=4" width="100px;" alt=""/><br /><sub><b>1chooo</b></sub></a><br /><a href="https://github.com/roma0323" title="Code">💻</a></td>
 <!--     <td align="center"><a href="https://github.com/hapiwangy"><img src="https://avatars.githubusercontent.com/u/99786569?v=4" width="100px;" alt=""/><br /><sub><b>hapiwangy</b></sub></a><br /><a href="https://github.com/hapiwangy/final_project_datavisualization/commits?author=hapiwangy" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/HapiO3O"><img src="https://avatars.githubusercontent.com/u/89393053?v=4" width="100px;" alt=""/><br /><sub><b>HapiO3O</b></sub></a><br /><a href="https://github.com/hapiwangy/final_project_datavisualization/commits?author=HapiO3O" title="Code">💻</a></td> -->
   </tr>
