@@ -8,13 +8,13 @@ import {
 } from './barChartPreprocessing.js';
 
 // 初始資料集
-d3.csv('data/Video_Games_Sales_as_at_22_Dec_2016.csv').then(
+d3.csv('../static/data/Video_Games_Sales_as_at_22_Dec_2016.csv').then(
     res => {
         console.log('initialData', res);
     }
 )
 // 資料過濾
-d3.csv('data/Video_Games_Sales_as_at_22_Dec_2016.csv', type).then(
+d3.csv('../static/data/Video_Games_Sales_as_at_22_Dec_2016.csv', type).then(
     res => {
         console.log('afterFilterData', res);
     }
