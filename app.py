@@ -84,7 +84,28 @@ def style():
 # 廖老大
 @app.route("/rating")
 def rating():
-    # styleData.movies_shows_count()
+    SAMPLE_SPREADSHEET_ID = "1kd8gloSg7VE0aXvaSzBOqVDAX3nKfRXsoQBLZz_i1zY"
+    SAMPLE_RANGE_NAME = "TV_Shows"
+    sheet = get_sheet(SAMPLE_SPREADSHEET_ID,SAMPLE_RANGE_NAME) 
+    # print(type(sheet))
+
+    # filtered_data = sheet[sheet['IMDb']!= '']
+    filtered_data = sheet[(sheet['Netflix'] == '1') & (sheet['IMDb']!= '')]
+
+    # Extract the values from the "IMDb" column that satisfy the conditions
+    imdb_list = filtered_data['IMDb'].tolist()
+
+    import json
+
+    # Convert the Python list to JSON string
+    json_data = json.dumps(imdb_list)
+
+    # Writing JSON data to a file
+    with open('./static/assets/js/data.js', 'w') as js_file:
+        js_file.write('const set1 = ')
+        js_file.write(json_data)
+        js_file.write(';')
+    
     return render_template('vedioRating/test.html')
 
 # 睿弘
