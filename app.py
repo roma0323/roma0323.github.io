@@ -12,12 +12,13 @@ from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 from filterData.trendingData import make_bar_chart_race
 from gsheet import get_sheet
+import filterData.styleData as styleData
 
 # If modifying these scopes, delete the file token.json.
 SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
 
 # The ID and range of a sample spreadsheet.
-# SAMPLE_SPREADSHEET_ID = "1kd8gloSg7VE0aXvaSzBOqVDAX3nKfRXsoQBLZz_i1zY"
+SAMPLE_SPREADSHEET_ID = "1kd8gloSg7VE0aXvaSzBOqVDAX3nKfRXsoQBLZz_i1zY"
 # # SAMPLE_SPREADSHEET_ID = ""
 # SAMPLE_RANGE_NAME = "TV_Shows"
 # SAMPLE_RANGE_NAME = ""
@@ -25,8 +26,25 @@ SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
 
 app = Flask(__name__)
 
+def init():
+    SAMPLE_RANGE_NAME = "netflix_titles"
+    global df_netflix_titles
+    df_netflix_titles = get_sheet(SAMPLE_SPREADSHEET_ID,SAMPLE_RANGE_NAME)
+    SAMPLE_RANGE_NAME = "disney_plus_titles"
+    global df_disney_plus_titles
+    df_disney_plus_titles = get_sheet(SAMPLE_SPREADSHEET_ID,SAMPLE_RANGE_NAME)
+    SAMPLE_RANGE_NAME = "amazon_prime_titles"
+    global df_amazon_prime_titles
+    df_amazon_prime_titles = get_sheet(SAMPLE_SPREADSHEET_ID,SAMPLE_RANGE_NAME)
+    SAMPLE_RANGE_NAME = "hulu_titles"
+    global df_hulu_titles
+    df_hulu_titles = get_sheet(SAMPLE_SPREADSHEET_ID,SAMPLE_RANGE_NAME)
+    return None
+
+
 @app.route("/")
 def main():
+    init()
     fruits = ['apple', 'orange', 'pear', 'pineapple', 'durian']
     return render_template('index.html', fruits=fruits)
 
@@ -48,11 +66,24 @@ def example3():
 # Yasmine
 @app.route("/style")
 def style():
-    return render_template('vedioStyle/vedioStyle.html')
+    listin_netflix_json, listin_disney_json, listin_amazon_json, listin_hulu_json = styleData.list_count()
+    netflix_movie_tv_count_json, disney_movie_tv_count_json, amazon_movie_tv_count_json, hulu_movie_tv_count_json = styleData.movies_shows_count()
+    season_count_json = styleData.one_season_count()
+    return render_template('vedioStyle/vedioStyle.html', 
+                           listin_netflix_json=listin_netflix_json, 
+                           listin_disney_json=listin_disney_json, 
+                           listin_amazon_json=listin_amazon_json, 
+                           listin_hulu_json=listin_hulu_json, 
+                           netflix_movie_tv_count_json=netflix_movie_tv_count_json, 
+                           disney_movie_tv_count_json=disney_movie_tv_count_json, 
+                           amazon_movie_tv_count_json=amazon_movie_tv_count_json, 
+                           hulu_movie_tv_count_json=hulu_movie_tv_count_json,
+                           season_count_json=season_count_json)
 
 # 廖老大
 @app.route("/rating")
 def rating():
+    styleData.movies_shows_count()
     return render_template('vedioRating/vedioRating.html')
 
 # 睿弘
