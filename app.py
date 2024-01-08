@@ -10,7 +10,7 @@ from google.oauth2 import service_account
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
-from filterData.trendingData import disney_plus_titles_data
+from filterData.trendingData import make_bar_chart_race
 from gsheet import get_sheet
 
 # If modifying these scopes, delete the file token.json.
@@ -58,7 +58,7 @@ def rating():
 # 睿弘
 @app.route("/trending")
 def trending():
-    disney_plus_titles_data()
+    make_bar_chart_race()
     return render_template('vedioTrending/vedioTrending.html')
 
 # Test connect to google sheet
