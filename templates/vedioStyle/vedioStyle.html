@@ -44,46 +44,10 @@ var seasonCountElement = document.getElementById("season_count_json").textConten
 
 
 //第一個圖表
-let evaluation_ratio1_1 = [
-	{
-        "type":"TVShow",
-        "count":10
-    },
-    {
-        "type":"Movie",
-        "count":30
-    }
-];
-let evaluation_ratio1_2 = [
-	{
-        "type":"TVShow",
-        "count":10
-    },
-    {
-        "type":"Movie",
-        "count":30
-    }
-];
-let evaluation_ratio1_3 = [
-    {
-        "type":"TVShow",
-        "count":10
-    },
-    {
-        "type":"Movie",
-        "count":30
-    }
-];
-let evaluation_ratio1_4 = [
-	{
-        "type":"TVShow",
-        "count":10
-    },
-    {
-        "type":"Movie",
-        "count":30
-    }
-];
+let evaluation_ratio1_1 = json_to_array_movie_tv(netflixMovieTvCountElement);
+let evaluation_ratio1_2 = json_to_array_movie_tv(disneyMovieTvCountElement);
+let evaluation_ratio1_3 = json_to_array_movie_tv(huluMovieTvCountElement);
+let evaluation_ratio1_4 = json_to_array_movie_tv(amazonMovieTvCountElement);
 
 let myGraph1 = document.getElementById('myGraph1');
 let trace1_1 = {};
@@ -403,6 +367,31 @@ let layout3 = {
 };
 
 Plotly.newPlot(myGraph3, data3, layout3);
+
+
+
+function json_to_array_movie_tv(json_data){
+	// Parse the JSON string into a JavaScript object
+	var dataObj = JSON.parse(json_data);
+
+	// Convert the object into the desired format
+	var result = [];
+
+	for (var key in dataObj) {
+		if (dataObj.hasOwnProperty(key)) {
+			var platform = key;
+			var count = dataObj[key];
+			var platformObject = {
+				"Platform": platform,
+				"count": count
+			};
+			result.push(platformObject);
+		}
+	}
+	return result;
+}
+
+
 
 </script>
 {% endblock %}
