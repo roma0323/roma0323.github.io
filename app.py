@@ -69,6 +69,7 @@ def style():
     listin_netflix_json, listin_disney_json, listin_amazon_json, listin_hulu_json = styleData.list_count()
     netflix_movie_tv_count_json, disney_movie_tv_count_json, amazon_movie_tv_count_json, hulu_movie_tv_count_json = styleData.movies_shows_count()
     season_count_json = styleData.one_season_count()
+
     return render_template('vedioStyle/vedioStyle.html', 
                            listin_netflix_json=listin_netflix_json, 
                            listin_disney_json=listin_disney_json, 
@@ -83,8 +84,8 @@ def style():
 # 廖老大
 @app.route("/rating")
 def rating():
-    styleData.movies_shows_count()
-    return render_template('vedioRating/vedioRating.html')
+    # styleData.movies_shows_count()
+    return render_template('vedioRating/test.html')
 
 # 睿弘
 @app.route("/trending")
