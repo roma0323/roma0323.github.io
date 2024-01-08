@@ -10,7 +10,7 @@ from google.oauth2 import service_account
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
-from filterData.trendingData import netflix_data
+from filterData.trendingData import make_bar_chart_race
 from gsheet import get_sheet
 import filterData.styleData as styleData
 
@@ -89,7 +89,7 @@ def rating():
 # 睿弘
 @app.route("/trending")
 def trending():
-    netflix_data()
+    make_bar_chart_race()
     return render_template('vedioTrending/vedioTrending.html')
 
 # Test connect to google sheet
@@ -122,4 +122,5 @@ def add():
     worksheet.append_row(data_to_add)
 
     return render_template('index.html')
+
 
