@@ -7,24 +7,24 @@ import plotly
 
 def make_bar_chart_race():
     # netflix_date = get_OTT_data("1kd8gloSg7VE0aXvaSzBOqVDAX3nKfRXsoQBLZz_i1zY","netflix_titles")   #get netflix date data
-    # disney_plus_date = get_OTT_data("1kd8gloSg7VE0aXvaSzBOqVDAX3nKfRXsoQBLZz_i1zY","disney_plus_titles")   #get disney_plus date data
+    # # disney_plus_date = get_OTT_data("1kd8gloSg7VE0aXvaSzBOqVDAX3nKfRXsoQBLZz_i1zY","disney_plus_titles")   #get disney_plus date data
     # hulu_date = get_OTT_data("1kd8gloSg7VE0aXvaSzBOqVDAX3nKfRXsoQBLZz_i1zY","hulu_titles")   #get hulu date data
     
 
-    # hulu_OTT = ['hulu'] * len(hulu_date)
-    # hulu_quantity = [1] * len(hulu_date)
+    # hulu_OTT = ['hulu'] * len(hulu_date[:1100])
+    # hulu_quantity = [1] * len(hulu_date[:1100])
     # hulu_quantity = [i* + 1 for i in range(len(hulu_quantity))]
     
     # # disney_plus_OTT = ['disney_plus'] * len(disney_plus_date)
     # # disney_plus_quantity = [1] * len(disney_plus_date)
     # # disney_plus_quantity = [i* + 1 for i in range(len(disney_plus_quantity))]
 
-    # netflix_OTT = ['netflix'] * len(netflix_date)
-    # netflix_quantity = [1] * len(netflix_date)
+    # netflix_OTT = ['netflix'] * len(netflix_date[:5000])
+    # netflix_quantity = [1] * len(netflix_date[:5000])
     # netflix_quantity = [i* + 1 for i in range(len(netflix_quantity))]
     
 
-    # static_dates = hulu_date+netflix_date
+    # static_dates = hulu_date[:1100]+netflix_date[:5000]
     # static_OTT = hulu_OTT+netflix_OTT
     # static_quantity = hulu_quantity+netflix_quantity
 
@@ -62,7 +62,7 @@ def make_bar_chart_race():
     #     color=OTT,
     #     animation_frame=date,
     #     animation_group=OTT,
-    #     range_y=[0, 4000],)
+    #     range_y=[0, 2000],)
 
     # # Save Chart and export to HTML
     # plotly.offline.plot(fig, filename="hold3.html")
