@@ -1,17 +1,67 @@
 {% extends 'template.html' %}
 {% block title %}Home Page{% endblock %}
+{% block link %}<link rel="stylesheet" href="publisher/style.css" />{% endblock %}
 
 {% block content %}
+
 	<div id="page-wrapper">
+
 		<!-- Header -->
 		<section id="header">
 			<div class="container">
+
 				<!-- Logo -->
-				<h1 id="logo" style="margin-bottom: 2.5%; line-height: 100%;"><a href="/index.html">Trending</a></h1>
-				<h2>Video Analysis</h2>
-				
+				<h1 id="logo">Bar Chart Race</h1>
+				<P>Observation for the Profit of Platform Every Year</P>
+
 			</div>
 		</section>
+
+		<section id="main">
+			<div class="container">
+				<div id="content">
+
+					<!-- Post -->
+					<article class="box post">
+						<header>
+							<h2>
+								Motivation
+							</h2>
+						</header>
+						<p style="text-align: center;">
+							When I first started this class and learned that we would be using d3 for development, I
+							became interested in Bar Chart Race and started exploring it on the official website.
+							<br><br>
+							I was already fascinated by this visualization technique, so I searched for online resources and
+							applied it to the existing dataset to see what exciting results would emerge.
+						</p>
+					</article>
+				</div>
+			</div>
+		</section>
+
+		<!-- Main -->
+		<section id="main">
+			<div class="container">
+				<div id="content">
+
+					<!-- Post -->
+					<article class="box post">
+						<header>
+							<h2>
+								Bar Chart Race
+							</h2>
+						</header>
+						<div>
+							<p>
+								This bar chart race is designed to showcase the total revenue for each platform on a
+								yearly basis. Therefore, it
+								displays information for one year at a time, and the monetary unit is US dollars (US$).
+							</p>
+						</div>
+
+
+
     <div>                        <script type="text/javascript">window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
         <script type="text/javascript">/**
 * plotly.js v2.27.0
@@ -26,5 +76,43 @@
                             Plotly.animate('0c501dc9-5115-4b70-8124-12cc7b7cb759', null);
                         })                };                            </script>        </div>
 
-</div>
+
+						<br>
+						<hr color="#FFF" style="align-items: center; margin-bottom: 0.2%;">
+						<hr color="#FFF" style="align-items: center; margin-bottom: 4em;">
+						<div class="Observation">
+							<h2>My Observation</h2>
+							<p>
+								In this bar chart race, it is possible to observe that initially, there
+								may be only one game company(2600) dominating the entire gaming industry,
+								with competitors gradually emerging later on. However, as the bar chart
+								race progresses into the middle to later stages, several platforms suddenly
+								emerge, and their revenue surpasses that of all their competitors, establishing
+								a significant lead.
+							</p>
+						</div>
+
+						<hr color="#FFF" style="align-items: center; margin-bottom: 0.2%;">
+						<hr color="#FFF" style="align-items: center; margin-bottom: 4em;">
+
+						<div class="Improvements">
+							<h2>Some Improvements</h2>
+							<p>
+								Since the main modification is based on the official D3 example, the flexibility
+								is limited. It means that it's not possible to make specific modifications to
+								individual functionalities. If needed, the only option is to rewrite all the
+								functionalities. Therefore, this can serve as a starting point for exploring
+								more D3 functionalities through the bar chart race.
+							</p>
+						</div>
+
+					</article>
+
+				</div>
+			</div>
+		</section>
+
+		
+	</div>
+
 {% endblock %}
