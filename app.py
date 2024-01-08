@@ -84,18 +84,21 @@ def style():
 # 廖老大
 @app.route("/rating")
 def rating():
-    write_in_js('Netflix')
-    write_in_js('Hulu')
-    write_in_js('Prime Video')
-    write_in_js('Disney+')
+    SAMPLE_SPREADSHEET_ID = "1kd8gloSg7VE0aXvaSzBOqVDAX3nKfRXsoQBLZz_i1zY"
+    SAMPLE_RANGE_NAME = "TV_Shows"
+    global sheet
+    sheet = get_sheet(SAMPLE_SPREADSHEET_ID,SAMPLE_RANGE_NAME) 
+
+    write_in_js(sheet,'Netflix')
+    write_in_js(sheet,'Hulu')
+    write_in_js(sheet,'Prime Video')
+    write_in_js(sheet,'Disney+')
     
     return render_template('vedioRating/test.html')
 
-def write_in_js(OTT_platform):
+def write_in_js(sheet,OTT_platform):
      # filtered_data = sheet[sheet['IMDb']!= '']
-    SAMPLE_SPREADSHEET_ID = "1kd8gloSg7VE0aXvaSzBOqVDAX3nKfRXsoQBLZz_i1zY"
-    SAMPLE_RANGE_NAME = "TV_Shows"
-    sheet = get_sheet(SAMPLE_SPREADSHEET_ID,SAMPLE_RANGE_NAME) 
+    
 
     filtered_data = sheet[(sheet[OTT_platform] == '1') & (sheet['IMDb']!= '')]
 
