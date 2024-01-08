@@ -6,63 +6,67 @@ import streamlit as st
 import plotly
 
 def make_bar_chart_race():
-    netflix_date = get_OTT_data("1kd8gloSg7VE0aXvaSzBOqVDAX3nKfRXsoQBLZz_i1zY","netflix_titles")   #get netflix date data
-    disney_plus_date = get_OTT_data("1kd8gloSg7VE0aXvaSzBOqVDAX3nKfRXsoQBLZz_i1zY","disney_plus_titles")   #get disney_plus date data
-    hulu_date = get_OTT_data("1kd8gloSg7VE0aXvaSzBOqVDAX3nKfRXsoQBLZz_i1zY","hulu_titles")   #get hulu date data
+    # netflix_date = get_OTT_data("1kd8gloSg7VE0aXvaSzBOqVDAX3nKfRXsoQBLZz_i1zY","netflix_titles")   #get netflix date data
+    # disney_plus_date = get_OTT_data("1kd8gloSg7VE0aXvaSzBOqVDAX3nKfRXsoQBLZz_i1zY","disney_plus_titles")   #get disney_plus date data
+    # hulu_date = get_OTT_data("1kd8gloSg7VE0aXvaSzBOqVDAX3nKfRXsoQBLZz_i1zY","hulu_titles")   #get hulu date data
     
 
-    hulu_country = ['hulu'] * len(hulu_date)
-    hulu_sales = [1] * len(hulu_date)
-    hulu_sales = [i* + 1 for i in range(len(hulu_sales))]
+    # hulu_OTT = ['hulu'] * len(hulu_date)
+    # hulu_quantity = [1] * len(hulu_date)
+    # hulu_quantity = [i* + 1 for i in range(len(hulu_quantity))]
     
-    # disney_plus_country = ['disney_plus'] * len(disney_plus_date)
-    # disney_plus_sales = [1] * len(disney_plus_date)
-    # disney_plus_sales = [i* + 1 for i in range(len(disney_plus_sales))]
+    # # disney_plus_OTT = ['disney_plus'] * len(disney_plus_date)
+    # # disney_plus_quantity = [1] * len(disney_plus_date)
+    # # disney_plus_quantity = [i* + 1 for i in range(len(disney_plus_quantity))]
 
-    netflix_country = ['netflix'] * len(netflix_date)
-    netflix_sales = [1] * len(netflix_date)
-    netflix_sales = [i* + 1 for i in range(len(netflix_sales))]
+    # netflix_OTT = ['netflix'] * len(netflix_date)
+    # netflix_quantity = [1] * len(netflix_date)
+    # netflix_quantity = [i* + 1 for i in range(len(netflix_quantity))]
     
 
-    static_dates = hulu_date+netflix_date
-    static_country = hulu_country+netflix_country
-    static_sales = hulu_sales+netflix_sales
+    # static_dates = hulu_date+netflix_date
+    # static_OTT = hulu_OTT+netflix_OTT
+    # static_quantity = hulu_quantity+netflix_quantity
 
-    # static_dates = hulu_date+disney_plus_date+netflix_date
-    # static_country = hulu_country+disney_plus_country+netflix_country
-    # static_sales = hulu_sales+disney_plus_sales+netflix_sales
+    # # static_dates = hulu_date+disney_plus_date+netflix_date
+    # # static_OTT = hulu_OTT+disney_plus_OTT+netflix_OTT
+    # # static_quantity = hulu_quantity+disney_plus_quantity+netflix_quantity
 
 
   
 
     
-    # Create a DataFrame with static values
-    data = {
-        'Country': static_country,
-        'Sales': static_sales,
-        'Date': pd.to_datetime(static_dates)
-    }
-    df = pd.DataFrame(data)
+    # # Create a DataFrame with static values
+    # data = {
+    #     'OTT': static_OTT,
+    #     'quantity': static_quantity,
+    #     'Date': pd.to_datetime(static_dates)
+    # }
+    # df = pd.DataFrame(data)
 
-    # Store each column in a seperate varibale.
-    country = df["Country"]
-    sales = df["Sales"]
-    date = df["Date"].dt.strftime("%Y-%m-%d")
+    # # Store each column in a seperate varibale.
+    # OTT = df["OTT"]
+    # quantity = df["quantity"]
+    # date = df["Date"].dt.strftime("%Y-%m-%d")
 
-    # Create Animated Bar Chart and store figure as fig
-    fig = px.bar(
-        df,
-        x=country,
-        y=sales,
-        color=country,
-        animation_frame=date,
-        animation_group=country,
-        range_y=[0, 6000],
-    )
+    # color_map = {
+    #     'netflix': 'red',
+    #     'hulu': 'orange',
+    # }
 
-    # Save Chart and export to HTML
-    plotly.offline.plot(fig, filename="hold3.html")
+    # # Create Animated Bar Chart and store figure as fig
+    # fig = px.bar(
+    #     df,
+    #     x=OTT,
+    #     y=quantity,
+    #     color=OTT,
+    #     animation_frame=date,
+    #     animation_group=OTT,
+    #     range_y=[0, 4000],)
 
+    # # Save Chart and export to HTML
+    # plotly.offline.plot(fig, filename="hold3.html")
+    return None
 
 def get_OTT_data(SAMPLE_SPREADSHEET_ID,SAMPLE_RANGE_NAME):
 
