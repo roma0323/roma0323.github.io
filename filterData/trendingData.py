@@ -49,10 +49,7 @@ def make_bar_chart_race():
     # quantity = df["quantity"]
     # date = df["Date"].dt.strftime("%Y-%m-%d")
 
-    # color_map = {
-    #     'netflix': 'red',
-    #     'hulu': 'orange',
-    # }
+
 
     # # Create Animated Bar Chart and store figure as fig
     # fig = px.bar(
@@ -62,9 +59,12 @@ def make_bar_chart_race():
     #     color=OTT,
     #     animation_frame=date,
     #     animation_group=OTT,
-    #     range_y=[0, 2000],)
+    #     range_y=[0, 2000],
+    #     color_discrete_map={'netflix': '#e50914', 'hulu': '#1CE783'}
 
-    # # Save Chart and export to HTML
+    # )
+
+    # # # Save Chart and export to HTML
     # plotly.offline.plot(fig, filename="hold3.html")
     return None
 
