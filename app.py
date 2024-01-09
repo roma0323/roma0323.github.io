@@ -10,7 +10,7 @@ from google.oauth2 import service_account
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
-from filterData.trendingData import make_bar_chart_race
+from filterData.trendingData import get_quantity_by_year
 from gsheet import get_sheet
 import filterData.styleData as styleData
 
@@ -83,6 +83,16 @@ def style():
                            hulu_movie_tv_count_json=hulu_movie_tv_count_json,
                            season_count_json=season_count_json)
 
+
+# 睿弘
+@app.route("/trending")
+def trending():
+    date_list,number_list=get_quantity_by_year()
+    return render_template('vedioTrending/vedioTrending.html',
+                           date_list=date_list,
+                           number_list=number_list)
+
+
 # 廖老大
 @app.route("/rating")
 def rating():
@@ -140,12 +150,6 @@ def write_in_js(sheet,OTT_platform):
             js_file.write(';')
 
     return average_rate        
-
-# 睿弘
-@app.route("/trending")
-def trending():
-    make_bar_chart_race()
-    return render_template('vedioTrending/vedioTrending.html')
 
 # Test connect to google sheet
 @app.route("/test")

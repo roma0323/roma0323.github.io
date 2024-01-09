@@ -4,6 +4,23 @@ import plotly.express as px
 import pandas as pd
 # import streamlit as st
 
+def get_quantity_by_year():
+    hulu_date = get_OTT_data("1kd8gloSg7VE0aXvaSzBOqVDAX3nKfRXsoQBLZz_i1zY","hulu_titles")   #get hulu date data
+
+
+    from collections import Counter
+
+    # Count occurrences of each date
+    date_counts = Counter(hulu_date)
+
+    # Extract unique dates and their counts
+    date_list = list(date_counts.keys())
+    number_list = list(date_counts.values())
+
+    print("date_list =", date_list)
+    print("number_list =", number_list)
+    return date_list,number_list
+
 
 def make_bar_chart_race():
     # netflix_date = get_OTT_data("1kd8gloSg7VE0aXvaSzBOqVDAX3nKfRXsoQBLZz_i1zY","netflix_titles")   #get netflix date data
@@ -93,6 +110,5 @@ def get_OTT_data(SAMPLE_SPREADSHEET_ID,SAMPLE_RANGE_NAME):
         else:
             print("Encountered an empty date string.")
             
-
     return converted_dates
 
