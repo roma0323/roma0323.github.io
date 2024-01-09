@@ -34,7 +34,7 @@
 		<tr>
 			<td><b>陳睿弘</b></td>
 			<td>110403519</td>
-			<td>Trending page,Rating page,主題發想,專案管理<td>
+			<td>Trending page , Rating page , 主題發想 , 專案管理<td>
 		</tr>
 		<tr>
 			<td>王冠程</td>
