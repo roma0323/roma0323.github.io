@@ -1,0 +1,70 @@
+<html>
+<body>
+<fieldset>
+	<legend>add to database</legend>
+	<form action="/add" method="post" >
+	<div class="outterText">
+		<div class="center"><div class="title">film name</div></div>
+		<input type="text" id="filmName" name="filmName"  size="10">
+	</div>
+
+	<div class="outterText">
+		<div class="center"><div class="title">year</div></div>
+		<input type="text" id="year" name="year"  size="10">
+	</div>
+
+	<div class="outterText">
+		<div class="center"><div class="title">IMDB</div></div>
+		<input type="text" id="IMDB" name="IMDB" size="10">
+	</div>
+
+	<div class="outterText">
+		<div class="center"><div class="title">Rotten Tomatoes</div></div>
+		<input type="text" id="RottenTomatoes" name="RottenTomatoes" size="10">
+	</div>
+
+    <div class="outter">
+    <div class="center"><div class="title">age</div></div>
+	<div class="radioClass">
+		<input type="radio" id="age" name="age" value="7+">
+		<label>7~16</label>
+	</div>
+
+	<div>
+		<input type="radio" id="age" name="age" value="16+">
+		<label>16~18</label>
+	</div>
+
+	<div>
+		<input type="radio" id="age" name="age" value="18+">
+		<label>18+</label>
+	</div>
+    </div>
+
+    <div class="outter">
+    <div class="center"><div class="title">platform</div></div>
+	<div>
+		<input type="radio" id="platform" name="platform" value="Netflix">
+		<label for="Netflix">Netflix</label>
+	</div>
+
+	<div>
+		<input type="radio" id="platform" name="platform" value="Hulu">
+		<label for="hulu">Hulu</label>
+	</div>
+
+	<div>
+		<input type="radio" id="platform" name="platform" value="Prime Video">
+		<label for="primeVideo">Prime Video</label>
+	</div>
+    <div>
+		<input type="radio" name="platform" value="Disney+">
+		<label for="Disney">Disney+</label>
+	</div>
+    </div>
+	<input type="submit"value="submit" class="center btn">
+</form>
+</fieldset>
+</body>
+</html>
+<style>
