@@ -1,3 +1,4 @@
+
 {% extends 'template.html' %}
 {% block title %}Home Page{% endblock %}
 
@@ -7,15 +8,515 @@
 	<section id="header">
 		<div class="container">
 			<!-- Logo -->
-			<h1 id="logo" style="margin-bottom: 2.5%; line-height: 100%;"><a href="/index.html">Style Compare</a></h1>
-			<h2>Video Analysis</h2>
-			
+			<h1 id="logo" style="margin-bottom: 2.5%; line-height: 100%;">Style Compare</h1>
+			<h2>各串流平台之分析</h2>
+			<p style="text-align: center;">
+				此頁使用了4份以各串流平台為出發點的資料 分別為：<br>
+				<a href="https://www.kaggle.com/datasets/shivamb/netflix-shows">Netflix Movies and TV Shows、</a>
+				<a href="https://www.kaggle.com/datasets/shivamb/disney-movies-and-tv-shows">Disney Plus Movies and TV Shows、</a><br>
+				<a href="https://www.kaggle.com/datasets/shivamb/amazon-prime-movies-and-tv-shows">Amazon Prime Movies and TV Shows、</a>
+				<a href="https://www.kaggle.com/datasets/shivamb/hulu-movies-and-tv-shows">Hulu Movies and TV Shows</a>
+			</p>
 		</div>
 	</section>
 
 	<!-- Main -->
-	<!--把你的code寫在這-->
+	<section id="main">
+		<div class="container">
+			<div id="content">
+				<!-- Post -->
+				<article class="box post">
+					<header>
+						<h2>
+							Pie Chart
+						</h2>
+					</header>
+					<div id="pie_myGraph"></div>
+					<p style="text-align: center;">
+						每個觀眾的喜好不同，有些人喜歡影集，而有些人喜歡電影。<br><br>
+						在行銷學課程中學到「類異點（POD）」，在分析這幾份資料前，我們猜測或許有串流平台會主打電影或影集成為讓他們從多個競爭者中突出的方式，來吸引特定的觀眾族群。<br><br>
+					</p>
+					<hr color="#FFF" style="align-items: center;">
+				</article>
+			</div>
+		</div>
+	</section>
+
+	<section id="main1">
+		<div class="container">
+			<div id="content1">
+				<!-- Post -->
+				<article class="box post">
+					<header>
+						<h2>Radar Chart</h2>
+					</header>
+					<div id="radar_myGraph1"></div>
+					<h4 style="font-size: larger; margin-bottom: 2%;">
+						各平台電影和影集種類
+					</h4>
+					<!-- radar chart 的容器 -->
+					<div class="radar-chart-container chart"></div>
+
+					<!-- 切換 radar chart 的按鈕 -->
+					<div class="controls" style="margin-top: 1%;">
+						<button id="bt_all" class="button" data-name="radar_myGraph1">All</button>
+						<button id="bt_netflix" class="button" data-name="radar_myGraph1">Netflix</button>
+						<button id="bt_disneyplus"  class="button" data-name="radar_myGraph2">Disney Plus</button>
+						<button id="bt_hulu" class="button" data-name="radar_myGraph3">Hulu</button>
+						<button id="bt_amazon" class="button" data-name="radar_myGraph4">Prime Video</button>
+					</div>
+					<br><br>
+					<!-- <p style="font-weight: bold;" style="padding-top: 10em;">圖表分析：</p> -->
+					<p style="text-align: center;">
+						我們選擇各串流平台上最多的五個種類以雷達圖呈現，可以明顯地看出各家公司所主打的類別及優勢：<br><br>
+						❶ Netflix｜從雷達圖上看到有「International」的佔了40%，表示Netflix積極在擴展他的觀眾，利用擴大市占率來擁有競爭優勢。<br>
+						❷ Disney Plus｜「Family」、「Animation」、「Animals & Nature」都是闔家觀賞的，因此我們能更確定迪士尼的目標客群是家庭、小孩。<br><br>
+						❸ Hulu｜<br><br>
+						❹ Prime Video｜<br><br>
+					</p>
+
+				</article>
+			</div>
+		</div>
+		
+	</section>
+
+	<section id="main2">
+		<div class="container">
+			<div id="content2">
+				<!-- Post -->
+				<article class="box post">
+					<header>
+						<h2>Bar Chart</h2>
+					</header>
+
+					<h4 style="font-size: larger; margin-bottom: 2%;">
+						電影和影集種類
+					</h4>
+					<!-- bar chart 的容器 -->
+					<div class="bar-chart-container chart"></div>
+					<div class="select">
+						<select id="platformDropdown" class="region" name="select">
+							<option value="all">All</option>
+							<option value="bar_Netflix">Netflix</option>
+							<option value="bar_DisneyPlus">Disney Plus</option>
+							<option value="bar_Hulu">Hulu</option>
+							<option value="bar_PrimeVideo">Prime Video</option>
+						</select>
+					</div>
+					<div id="bar_myGraph"></div>
+					<!-- <p style="font-weight: bold;">圖表分析：</p> -->
+					<p style="text-align: center;">
+						(觀察哪個種類是類異點 可吸引到那個客群)：<br><br>
+						❶ Netflix｜從雷達圖上看到有「International」的佔了40%，表示Netflix積極在擴展他的觀眾，利用擴大市占率來擁有競爭優勢。<br>
+						❷ Disney Plus｜「Family」、「Animation」、「Animals & Nature」都是闔家觀賞的，因此我們能更確定迪士尼的目標客群是家庭、小孩。<br><br>
+						❸ Hulu｜<br><br>
+						❹ Prime Video｜<br><br>
+					</p>
+				</article>
+			</div>
+		</div>
+	</section>
 
 
+
+	<!-- data from backend -->
+	<div id="listin_netflix_json" style="display: none;">{{ listin_netflix_json }}</div>
+	<div id="listin_disney_json" style="display: none;">{{ listin_disney_json }}</div>
+	<div id="listin_amazon_json" style="display: none;">{{ listin_amazon_json }}</div>
+	<div id="listin_hulu_json" style="display: none;">{{ listin_hulu_json }}</div>
+	<div id="netflix_movie_tv_count_json" style="display: none;">{{ netflix_movie_tv_count_json }}</div>
+	<div id="disney_movie_tv_count_json" style="display: none;">{{ disney_movie_tv_count_json }}</div>
+	<div id="amazon_movie_tv_count_json" style="display: none;">{{ amazon_movie_tv_count_json }}</div>
+	<div id="hulu_movie_tv_count_json" style="display: none;">{{ hulu_movie_tv_count_json }}</div>
+	<div id="season_count_json" style="display: none;">{{ season_count_json }}</div>
 </div>
+<script>
+// Get the data elements by their IDs
+var netflixDataElement = document.getElementById("listin_netflix_json").textContent;
+var disneyDataElement = document.getElementById("listin_disney_json").textContent;
+var amazonDataElement = document.getElementById("listin_amazon_json").textContent;
+var huluDataElement = document.getElementById("listin_hulu_json").textContent;
+var netflixMovieTvCountElement = document.getElementById("netflix_movie_tv_count_json").textContent;
+var disneyMovieTvCountElement = document.getElementById("disney_movie_tv_count_json").textContent;
+var amazonMovieTvCountElement = document.getElementById("amazon_movie_tv_count_json").textContent;
+var huluMovieTvCountElement = document.getElementById("hulu_movie_tv_count_json").textContent;
+var seasonCountElement = document.getElementById("season_count_json").textContent;
+
+
+//第一個圖表
+let evaluation_ratio1_1 = json_to_array_movie_tv(netflixMovieTvCountElement);
+let evaluation_ratio1_2 = json_to_array_movie_tv(disneyMovieTvCountElement);
+let evaluation_ratio1_3 = json_to_array_movie_tv(huluMovieTvCountElement);
+let evaluation_ratio1_4 = json_to_array_movie_tv(amazonMovieTvCountElement);
+
+let myGraph1 = document.getElementById('pie_myGraph');
+let trace1_1 = {};
+trace1_1.type = "pie";
+trace1_1.title = "Netflix";
+trace1_1.hole = 0.5;
+trace1_1.labels = [];
+trace1_1.values = [];
+trace1_1.marker = { colors: ['#B81D24', '#221F1F'] };
+trace1_1.domain = {
+    row:0,
+    column:0
+};
+for(let x = 0; x < evaluation_ratio1_1.length; x++){
+    trace1_1.labels[x] = evaluation_ratio1_1[x]['name'];
+    trace1_1.values[x] = evaluation_ratio1_1[x]['count'];
+}
+
+let trace1_2 = {};
+trace1_2.type = "pie";
+trace1_2.title = "Disney Plus";
+trace1_2.hole = 0.5;
+trace1_2.labels = [];
+trace1_2.values = [];
+trace1_2.marker = { colors: ['#142850','#221F1F'] };
+trace1_2.domain = {
+    row:0,
+    column:1
+};
+
+for(let x=0; x<evaluation_ratio1_2.length; x++){
+    trace1_2.labels[x] = evaluation_ratio1_2[x]['name'];
+    trace1_2.values[x] = evaluation_ratio1_2[x]['count'];
+}
+
+let trace1_3 = {};
+trace1_3.type = "pie";
+trace1_3.title = "Hulu";
+trace1_3.hole = 0.5;
+trace1_3.labels = [];
+trace1_3.values = [];
+trace1_3.marker = { colors: ['#1ce783', '#221F1F'] };
+trace1_3.domain = {
+    row:0,
+    column:2
+};
+
+for(let x = 0; x < evaluation_ratio1_3.length; x++){
+    trace1_3.labels[x] = evaluation_ratio1_3[x]['name'];
+    trace1_3.values[x] = evaluation_ratio1_3[x]['count'];
+}
+
+let trace1_4 = {};
+trace1_4.type = "pie";
+trace1_4.title = "Prime Video";
+trace1_4.hole = 0.5;
+trace1_4.labels = [];
+trace1_4.values = [];
+trace1_4.marker = { colors: ['#3C78B4', '#221F1F'] };
+trace1_4.domain = {
+    row:0,
+    column:3
+};
+
+for(let x = 0 ; x < evaluation_ratio1_4.length; x++){
+    trace1_4.labels[x] = evaluation_ratio1_4[x]['name'];
+    trace1_4.values[x] = evaluation_ratio1_4[x]['count'];
+}
+
+let data1 = [];
+data1.push(trace1_1);
+data1.push(trace1_2);
+data1.push(trace1_3);
+data1.push(trace1_4);
+
+let layout1 = {
+    margin:{
+        t:10,
+        l:0,
+    },
+    grid:{
+        rows:1,
+        columns:4
+    }
+};
+Plotly.newPlot(myGraph1, data1, layout1);
+
+
+//第二個圖表
+let radar_count = 5;
+let radar_Netflix = json_to_array_listin(netflixDataElement);
+let radar_DisneyPlus = json_to_array_listin(disneyDataElement);
+let radar_Hulu = json_to_array_listin(huluDataElement);
+let radar_PrimeVideo = json_to_array_listin(amazonDataElement);
+
+let radar_myGraph1 = document.getElementById('radar_myGraph1');
+let radar_trace1 = {};
+radar_trace1.type = "scatterpolar";
+radar_trace1.name = "Netflix";
+radar_trace1.r = [];
+radar_trace1.theta = [];
+radar_trace1.fill = 'toself'; 
+radar_trace1.fillcolor = '#B81D24';  
+radar_trace1.line = { color: '#B81D24' };
+
+for(let x = 0; x < radar_count; x++){
+    radar_trace1.r[x] = radar_Netflix[x]['count'];
+    radar_trace1.theta[x] = radar_Netflix[x]['type'];
+}
+
+let radar_trace2 = {};
+radar_trace2.type = "scatterpolar";
+radar_trace2.name = "Disney Plus";
+radar_trace2.r = [];
+radar_trace2.theta = [];
+radar_trace2.fill = 'toself'; 
+radar_trace2.fillcolor = '#142850';  
+radar_trace2.line = { color: '#142850' };
+
+for(let x = 0; x < radar_count; x++){
+    radar_trace2.r[x] = radar_DisneyPlus[x]['count'];
+    radar_trace2.theta[x] = radar_DisneyPlus[x]['type'];
+}
+
+let radar_trace3 = {};
+radar_trace3.type = "scatterpolar";
+radar_trace3.name = "Hulu";
+radar_trace3.r = [];
+radar_trace3.theta = [];
+radar_trace3.fill = 'toself'; 
+radar_trace3.fillcolor = '#91B493';  
+radar_trace3.line = { color:'#91B493' };
+
+for(let x = 0; x < radar_count; x++){
+    radar_trace3.r[x] = radar_Hulu[x]['count'];
+    radar_trace3.theta[x] = radar_Hulu[x]['type'];
+}
+
+let radar_trace4 = {};
+radar_trace4.type = "scatterpolar";
+radar_trace4.name = "Prime Video";
+radar_trace4.r = [];
+radar_trace4.theta = [];
+radar_trace4.fill = 'toself'; 
+radar_trace4.fillcolor = '#3C78B4';  
+radar_trace4.line = { color: '#3C78B4' };
+
+for(let x = 0; x < radar_count; x++){
+    radar_trace4.r[x] = radar_PrimeVideo[x]['count'];
+    radar_trace4.theta[x] = radar_PrimeVideo[x]['type'];
+}
+
+let radar_data = [];
+radar_data.push(radar_trace1);
+radar_data.push(radar_trace2);
+radar_data.push(radar_trace3);
+radar_data.push(radar_trace4);
+
+let radar_layout = {
+    polar: {
+        radialaxis: {
+            visible: true,
+            // range: [0, 4000]  // Adjust the range based on your data
+        }
+    },
+    showlegend: true,
+    legend: {
+        orientation: 'h'
+    }
+};
+
+Plotly.newPlot(radar_myGraph1, radar_data, radar_layout);
+
+
+//第三個圖表
+let bar_count = 5;
+let bar_Netflix = json_to_array_listin(netflixDataElement);
+let bar_DisneyPlus = json_to_array_listin(disneyDataElement);
+let bar_Hulu = json_to_array_listin(huluDataElement);
+let bar_PrimeVideo = json_to_array_listin(amazonDataElement);
+
+let bar_myGraph = document.getElementById('bar_myGraph');
+let bar_trace1 = {};
+bar_trace1.type = "bar";
+bar_trace1.name = "Netflix";
+bar_trace1.marker = { color: "#B81D24" };
+bar_trace1.x = [];
+bar_trace1.y = [];
+
+for(let i=0;i<bar_Netflix.length;i++){
+	bar_trace1.x[i] = bar_Netflix[i]['type'];
+	bar_trace1.y[i] = bar_Netflix[i]['count'];
+}
+
+let bar_trace2 = {};
+bar_trace2.type = "bar";
+bar_trace2.name = "Disney Plus";
+bar_trace2.marker = { color: "#142850" };;
+bar_trace2.x = [];
+bar_trace2.y = [];
+
+for(let i=0;i< bar_DisneyPlus.length;i++){
+	bar_trace2.x[i] = bar_DisneyPlus[i]['type'];
+	bar_trace2.y[i] = bar_DisneyPlus[i]['count'];
+}
+
+let bar_trace3 = {};
+bar_trace3.type = "bar";
+bar_trace3.name = "Hulu";
+bar_trace3.marker = { color: '#91B493' };;
+bar_trace3.x = [];
+bar_trace3.y = [];
+
+for(let i=0;i<bar_Hulu.length;i++){
+	bar_trace3.x[i] = bar_Hulu[i]['type'];
+	bar_trace3.y[i] = bar_Hulu[i]['count'];
+}
+
+let bar_trace4 = {};
+bar_trace4.type = "bar";
+bar_trace4.name = "Prime Video";
+bar_trace4.marker = { color: '#3C78B4' };;
+bar_trace4.x = [];
+bar_trace4.y = [];
+
+for(let i=0;i<bar_PrimeVideo.length;i++){
+	bar_trace4.x[i] = bar_PrimeVideo[i]['type'];
+	bar_trace4.y[i] = bar_PrimeVideo[i]['count'];
+}
+
+
+let bar_data = [];
+bar_data.push(bar_trace1);
+bar_data.push(bar_trace2);
+bar_data.push(bar_trace3);
+bar_data.push(bar_trace4);
+
+let bar_layout = {
+    margin:{
+        t:0
+    },
+    barmode:'stack'
+};
+
+Plotly.newPlot(bar_myGraph, bar_data, bar_layout);
+
+
+function json_to_array_movie_tv(json_data){
+	// Parse the JSON string into a JavaScript object
+	var dataObj = JSON.parse(json_data);
+
+	// Convert the object into the desired format
+	var result = [];
+
+	for (var key in dataObj) {
+		if (dataObj.hasOwnProperty(key)) {
+			var platform = key;
+			var count = dataObj[key];
+			var platformObject = {
+				"Platform": platform,
+				"count": count
+			};
+			result.push(platformObject);
+		}
+	}
+	return result;
+}
+
+function json_to_array_listin(json_data){
+	// Parse the JSON string into a JavaScript object
+	var dataObj = JSON.parse(json_data);
+
+	// Convert the object into the desired format
+	var result = [];
+
+	for (var key in dataObj) {
+		if (dataObj.hasOwnProperty(key)) {
+			var type = key;
+			var count = dataObj[key];
+			var platformObject = {
+				"type": type,
+				"count": count
+			};
+			result.push(platformObject);
+		}
+	}
+	return result;
+}
+
+const bt_all = document.getElementById("bt_all");
+const bt_netflix = document.getElementById("bt_netflix");
+const bt_disneyplus = document.getElementById("bt_disneyplus");
+const bt_hulu = document.getElementById("bt_hulu");
+const bt_amazon = document.getElementById("bt_amazon");
+
+// Add a click event listener to the button
+bt_all.addEventListener("click", function() {
+	radar_data = [];
+	radar_data.push(radar_trace1);
+	radar_data.push(radar_trace2);
+	radar_data.push(radar_trace3);
+	radar_data.push(radar_trace4);
+	Plotly.newPlot(radar_myGraph1, radar_data, radar_layout);
+});
+bt_netflix.addEventListener("click", function() {
+	radar_data = [];
+	radar_data.push(radar_trace1);
+	Plotly.newPlot(radar_myGraph1, radar_data, radar_layout);
+});
+
+bt_disneyplus.addEventListener("click", function() {
+	radar_data = [];
+	radar_data.push(radar_trace2);
+	Plotly.newPlot(radar_myGraph1, radar_data, radar_layout);
+});
+
+bt_hulu.addEventListener("click", function() {
+	radar_data = [];
+	radar_data.push(radar_trace3);
+	Plotly.newPlot(radar_myGraph1, radar_data, radar_layout);
+});
+
+bt_amazon.addEventListener("click", function() {
+	radar_data = [];
+	radar_data.push(radar_trace4);
+	Plotly.newPlot(radar_myGraph1, radar_data, radar_layout);
+});
+
+const platformDropdown = document.getElementById("platformDropdown");
+platformDropdown.addEventListener("change", function() {
+    // Get the selected option value
+    const selectedPlatform = platformDropdown.value;
+
+    // Perform actions based on the selected platform
+    switch (selectedPlatform) {
+		case "all":
+			bar_data = [];
+			bar_data.push(bar_trace1);
+			bar_data.push(bar_trace2);
+			bar_data.push(bar_trace3);
+			bar_data.push(bar_trace4);
+			Plotly.newPlot(bar_myGraph, bar_data, bar_layout);
+			break;
+        case "bar_Netflix":
+			bar_data = [];
+			bar_data.push(bar_trace1);
+			Plotly.newPlot(bar_myGraph, bar_data, bar_layout);
+            break;
+        case "bar_DisneyPlus":
+			bar_data = [];
+			bar_data.push(bar_trace2);
+			Plotly.newPlot(bar_myGraph, bar_data, bar_layout);
+            break;
+        case "bar_Hulu":
+			bar_data = [];
+			bar_data.push(bar_trace3);
+			Plotly.newPlot(bar_myGraph, bar_data, bar_layout);
+            break;
+        case "bar_PrimeVideo":
+			bar_data = [];
+			bar_data.push(bar_trace4);
+			Plotly.newPlot(bar_myGraph, bar_data, bar_layout);
+            break;
+        default:
+            break;
+    }
+});
+
+</script>
 {% endblock %}
+

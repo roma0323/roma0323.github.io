@@ -18,14 +18,35 @@ SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
 
 # The ID and range of a sample spreadsheet.
 SAMPLE_SPREADSHEET_ID = "1kd8gloSg7VE0aXvaSzBOqVDAX3nKfRXsoQBLZz_i1zY"
-SAMPLE_RANGE_NAME = "TV_Shows"
-
+# # SAMPLE_SPREADSHEET_ID = ""
+# SAMPLE_RANGE_NAME = "TV_Shows"
+# SAMPLE_RANGE_NAME = ""
+sheet = None
+df_netflix_titles = None
 
 app = Flask(__name__)
+
+def init():
+    SAMPLE_RANGE_NAME = "netflix_titles"
+    global df_netflix_titles
+    if df_netflix_titles is None:
+        df_netflix_titles = get_sheet(SAMPLE_SPREADSHEET_ID,SAMPLE_RANGE_NAME)
+        SAMPLE_RANGE_NAME = "disney_plus_titles"
+        global df_disney_plus_titles
+        df_disney_plus_titles = get_sheet(SAMPLE_SPREADSHEET_ID,SAMPLE_RANGE_NAME)
+        SAMPLE_RANGE_NAME = "amazon_prime_titles"
+        global df_amazon_prime_titles
+        df_amazon_prime_titles = get_sheet(SAMPLE_SPREADSHEET_ID,SAMPLE_RANGE_NAME)
+        SAMPLE_RANGE_NAME = "hulu_titles"
+        global df_hulu_titles
+        df_hulu_titles = get_sheet(SAMPLE_SPREADSHEET_ID,SAMPLE_RANGE_NAME)
+    return None
+
+
 @app.route("/")
 def main():
-    fruits = ['apple', 'orange', 'pear', 'pineapple', 'durian']
-    return render_template('index.html', fruits=fruits)
+    init()
+    return render_template('index.html')
 
 # 範例一
 @app.route("/example1")
@@ -45,17 +66,91 @@ def example3():
 # Yasmine
 @app.route("/style")
 def style():
-    return render_template('vedioStyle/vedioStyle.html')
+    listin_netflix_json, listin_disney_json, listin_amazon_json, listin_hulu_json = styleData.list_count()
+    netflix_movie_tv_count_json, disney_movie_tv_count_json, amazon_movie_tv_count_json, hulu_movie_tv_count_json = styleData.movies_shows_count()
+    season_count_json = styleData.one_season_count()
 
-# 廖老大
-@app.route("/rating")
-def rating():
-    return render_template('vedioRating/vedioRating.html')
+    return render_template('vedioStyle/vedioStyle.html', 
+                           listin_netflix_json=listin_netflix_json, 
+                           listin_disney_json=listin_disney_json, 
+                           listin_amazon_json=listin_amazon_json, 
+                           listin_hulu_json=listin_hulu_json, 
+                           netflix_movie_tv_count_json=netflix_movie_tv_count_json, 
+                           disney_movie_tv_count_json=disney_movie_tv_count_json, 
+                           amazon_movie_tv_count_json=amazon_movie_tv_count_json, 
+                           hulu_movie_tv_count_json=hulu_movie_tv_count_json,
+                           season_count_json=season_count_json)
+
 
 # 睿弘
 @app.route("/trending")
 def trending():
-    return render_template('vedioTrending/vedioTrending.html')
+    hulu_date_list,hulu_number_list=get_quantity_by_year("hulu_titles")
+    netflix_date_list,netflix_number_list=get_quantity_by_year("netflix_titles")
+    return render_template('vedioTrending/vedioTrending.html',
+                           hulu_date_list=hulu_date_list,
+                           hulu_number_list=hulu_number_list,
+                           netflix_date_list=netflix_date_list,
+                           netflix_number_list=netflix_number_list)
+
+
+# 廖老大
+@app.route("/rating")
+def rating():
+    SAMPLE_SPREADSHEET_ID = "1kd8gloSg7VE0aXvaSzBOqVDAX3nKfRXsoQBLZz_i1zY"
+    SAMPLE_RANGE_NAME = "TV_Shows"
+    global sheet
+    if sheet is None:
+        sheet = get_sheet(SAMPLE_SPREADSHEET_ID,SAMPLE_RANGE_NAME) 
+
+    
+    return render_template('vedioRating/vedioRating.html',
+                            Netflix_IMDb_rate = write_in_js(sheet,'Netflix'),
+                            Hulu_IMDb_rate = write_in_js(sheet,'Hulu'),
+                            Prime_IMDb_rate = write_in_js(sheet,'Prime Video'),
+                            Disney_IMDb_rate = write_in_js(sheet,'Disney+'))
+
+def write_in_js(sheet,OTT_platform):
+     # filtered_data = sheet[sheet['IMDb']!= '']
+    
+
+    filtered_data = sheet[(sheet[OTT_platform] == '1') & (sheet['IMDb']!= '')]
+
+    # Extract the values from the "IMDb" column that satisfy the conditions
+    imdb_list = filtered_data['IMDb'].tolist()
+
+    number_list = [float(num) for num in imdb_list]
+
+    average_rate = round(sum(number_list) / len(number_list),2)
+    print(f'{OTT_platform} vedio average IMDb rate is:', average_rate)
+
+
+    import json
+
+    # Convert the Python list to JSON string
+    json_data = json.dumps(imdb_list)
+    variable_exists = False
+
+    if OTT_platform=='Prime Video':
+        OTT_platform='prime_video'
+    if OTT_platform=='Disney+':
+        OTT_platform='Disney'    
+
+    with open('./static/assets/js/data.js', 'r') as js_file:
+        for line in js_file:
+            if f'const {OTT_platform}_list =' in line:
+                variable_exists = True
+                break
+                
+    if not variable_exists:
+        # Writing JSON data to a file
+        with open('./static/assets/js/data.js', 'a') as js_file:
+            js_file.write('\n')
+            js_file.write(f'const {OTT_platform}_list = ')
+            js_file.write(json_data)
+            js_file.write(';')
+
+    return average_rate        
 
 # 李安之
 @app.route("/perference")
@@ -74,54 +169,9 @@ def addAmazonForm():
 # Test connect to google sheet
 @app.route("/test")
 def test():
-    """Shows basic usage of the Sheets API.
-    Prints values from a sample spreadsheet.
-    """
-    creds = None
-    # The file token.json stores the user's access and refresh tokens, and is
-    # created automatically when the authorization flow completes for the first
-    # time.
-    if os.path.exists("token.json"):
-        creds = Credentials.from_authorized_user_file("token.json", SCOPES)
-    # If there are no (valid) credentials available, let the user log in.
-    if not creds or not creds.valid:
-        if creds and creds.expired and creds.refresh_token:
-            creds.refresh(Request())
-        else:
-            flow = InstalledAppFlow.from_client_secrets_file(
-                "credentials.json", SCOPES
-            )
-            creds = flow.run_local_server(port=3000)
-        # Save the credentials for the next run
-        with open("token.json", "w") as token:
-            token.write(creds.to_json())
-
-    try:
-        service = build("sheets", "v4", credentials=creds)
-
-        # Call the Sheets API
-        sheet = service.spreadsheets()
-        result = (
-            sheet.values()
-            .get(spreadsheetId=SAMPLE_SPREADSHEET_ID, range=SAMPLE_RANGE_NAME)
-            .execute()
-        )
-        values = result.get("values", [])
-        if not values:
-            print("No data found.")
-        else:
-            print("Data found.")
-            df = pd.DataFrame(values)
-            # Get the first row for the header
-            df.columns = df.iloc[0]
-            # Take the data less the header row
-            df = df[1:]
-            # print the numbrr of rows
-            print(df.head())
-
-    except HttpError as err:
-        print(err)
-        
+    SAMPLE_SPREADSHEET_ID = "1kd8gloSg7VE0aXvaSzBOqVDAX3nKfRXsoQBLZz_i1zY"
+    SAMPLE_RANGE_NAME = "TV_Shows"
+    get_sheet(SAMPLE_SPREADSHEET_ID,SAMPLE_RANGE_NAME)
     return render_template('index.html')
 
 
