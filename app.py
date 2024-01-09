@@ -47,8 +47,7 @@ def init():
 @app.route("/")
 def main():
     init()
-    fruits = ['apple', 'orange', 'pear', 'pineapple', 'durian']
-    return render_template('index.html', fruits=fruits)
+    return render_template('index.html')
 
 # 範例一
 @app.route("/example1")
