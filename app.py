@@ -3,13 +3,15 @@ import os.path
 import pandas as pd
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
-
+from flask import request
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
 from google.oauth2 import service_account
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
+import random
+
 
 # If modifying these scopes, delete the file token.json.
 SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
@@ -54,6 +56,20 @@ def rating():
 @app.route("/trending")
 def trending():
     return render_template('vedioTrending/vedioTrending.html')
+
+# 李安之
+@app.route("/perference")
+def perference():
+    return render_template('forms/perferForm.html')
+
+@app.route("/addForm")
+def addForm():
+    return render_template('forms/addForm.html')
+
+@app.route("/addAmazonForm")
+def addAmazonForm():
+    return render_template('forms/addAmazonForm.html')
+
 
 # Test connect to google sheet
 @app.route("/test")
@@ -110,23 +126,90 @@ def test():
 
 
 # Test add data to google sheet
-@app.route("/add")
+@app.route("/add", methods=['POST'])
 def add():
-    # Define the scope and credentials JSON file
-    scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
-    creds = ServiceAccountCredentials.from_json_keyfile_name('credentials_for_update.json', scope)
-
-    # Authorize the credentials
-    client = gspread.authorize(creds)
-
-    # Open the desired Google Sheet by its title or URL
-    sheet = client.open('Datavisualization')
-    # Select the worksheet where you want to add data
-    worksheet = sheet.get_worksheet(0)  # Change the index to your desired worksheet
-    # Define the data you want to add in a list
-    data_to_add = ["Value 1", "Value 2", "Value 3"]
-
-    # Append the data to the worksheet
-    worksheet.append_row(data_to_add)
-
+    if request.method=='POST':
+        form_data=request.form
+        print(form_data)
+        scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
+        creds = ServiceAccountCredentials.from_json_keyfile_name('credentials_for_update.json', scope)
+        client = gspread.authorize(creds)
+        sheet = client.open('Datavisualization')
+        worksheet = sheet.get_worksheet(0)  # Change the index to your desired worksheet
+        platformData=["Netflix","hulu","primeVideo","Disney"]
+        platformDataToAdd=[0,0,0,0]
+        for i in range (4):
+            if platformData[i]==form_data['platform']:
+                platformDataToAdd[i]=1
+                break
+        data_to_add = ["", form_data['filmName'],form_data['year'],form_data['age'],form_data['IMDB'],form_data['RottenTomatoes'],platformDataToAdd[0],platformDataToAdd[1],platformDataToAdd[2],platformDataToAdd[3]]
+        worksheet.append_row(data_to_add)
+        return render_template('index.html',confirm="上傳成功")
     return render_template('index.html')
+
+
+@app.route("/perferGet",methods=['POST'])
+def perferGet():
+     
+    """Shows basic usage of the Sheets API.
+    Prints values from a sample spreadsheet.
+    """
+    df = pd.DataFrame()
+    creds = None
+    if os.path.exists("token.json"):
+        creds = Credentials.from_authorized_user_file("token.json", SCOPES)
+    if not creds or not creds.valid:
+        if creds and creds.expired and creds.refresh_token:
+            creds.refresh(Request())
+        else:
+            flow = InstalledAppFlow.from_client_secrets_file(
+                "credentials.json", SCOPES
+            )
+            creds = flow.run_local_server(port=3000)
+        with open("token.json", "w") as token:
+            token.write(creds.to_json())
+
+    try:
+        service = build("sheets", "v4", credentials=creds)
+
+        # Call the Sheets API
+        sheet = service.spreadsheets()
+        result = (
+            sheet.values()
+            .get(spreadsheetId=SAMPLE_SPREADSHEET_ID, range=SAMPLE_RANGE_NAME)
+            .execute()
+        )
+        values = result.get("values", [])
+        if not values:
+            print("No data found.")
+        else:
+            print("Data found.")
+            df = pd.DataFrame(values)
+            # Get the first row for the header
+            df.columns = df.iloc[0]
+            # Take the data less the header row
+            df = df[1:]
+            # print the numbrr of rows
+        if request.method=='POST':
+            form_data=request.form
+            platformData=["Netflix","Hulu","Prime Video","Disney+"]
+            ageData=["7+","16+","18+"]
+            temp = df[
+                (pd.to_numeric(df['IMDb'], errors='coerce') >= float(form_data['IMDB']))
+            ]
+            for i in range(4):
+                if form_data['platform']==platformData[i]:
+                    temp=temp[temp[platformData[i]]=='1']
+            for i in range(3):
+                if form_data['age']==ageData[0]:
+                    temp=temp[temp['Age']==ageData[0]]
+                elif form_data['age']==ageData[1]:
+                    temp=temp[(temp['Age']==ageData[0])|(temp['Age']==ageData[1])]
+            print(temp.iloc[0])
+            
+
+            
+    except HttpError as err:
+        print(err)
+        
+    return render_template('forms/recommondation.html',val=(temp.iloc[0]['Title']))
