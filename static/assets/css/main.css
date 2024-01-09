@@ -175,7 +175,7 @@ html {
 }
 
 body {
-	background: #f0f0f0;
+	background: #fff;
 }
 
 body.is-preload *,
@@ -198,7 +198,7 @@ select {
 	font-family: 'Source Sans Pro';
 	font-weight: 300;
 	text-align: center;
-	color: #777;
+	color: #3c3c3c;
 	line-height: 1.65em;
 	font-size: 15pt;
 }
@@ -211,7 +211,7 @@ h5,
 h6 {
 	font-weight: 600;
 	text-transform: uppercase;
-	color: #888;
+	color: #3c3c3c;
 }
 
 h1 a,
@@ -244,9 +244,9 @@ a {
 	-webkit-transition: color 0.25s ease-in-out, border-bottom-color 0.25s ease-in-out;
 	-ms-transition: color 0.25s ease-in-out, border-bottom-color 0.25s ease-in-out;
 	transition: color 0.25s ease-in-out, border-bottom-color 0.25s ease-in-out;
-	color: #666;
+	color: #3c3c3c;
 	text-decoration: none;
-	border-bottom: solid 1px #ddd;
+	border-bottom: solid 1px #fff;
 }
 
 a strong {
@@ -257,18 +257,18 @@ a strong {
 }
 
 a:hover {
-	color: #ed786a;
+	color: #b81d24;
 	border-bottom-color: rgba(255, 255, 255, 0);
 }
 
 a:hover strong {
-	color: #ed786a;
+	color: #b81d24;
 }
 
 strong,
 b {
 	font-weight: 600;
-	color: #666;
+	color: #3c3c3c;
 }
 
 em,
@@ -290,11 +290,11 @@ sup {
 
 hr {
 	border: 0;
-	border-top: solid 1px #ddd;
+	border-top: solid 1px #fff;
 }
 
 blockquote {
-	border-left: solid 0.5em #ddd;
+	border-left: solid 0.5em #fff;
 	padding: 1em 0 1em 2em;
 	font-style: italic;
 }
@@ -1601,7 +1601,7 @@ article:last-child {
 	-ms-transition: opacity 0.25s ease-in-out;
 	transition: opacity 0.25s ease-in-out;
 	display: inline-block;
-	border: solid 6px #ebebeb !important;
+	border: solid 6px #fff !important;
 }
 
 .image:hover {
@@ -1680,7 +1680,7 @@ ul.links {
 
 ul.links li {
 	display: inline;
-	border-left: solid 1px #d0d0d0;
+	border-left: solid 1px fff;
 	padding-left: 1em;
 	margin: 0 0 0 1em;
 }
@@ -1718,7 +1718,7 @@ ul.divided {
 }
 
 ul.divided li {
-	border-top: solid 2px #e5e5e5;
+	border-top: solid 2px #fff;
 	padding-left: 0;
 	margin: 2.5em 0 0 0;
 	padding: 2.5em 0 0 0;
@@ -1749,7 +1749,7 @@ ul.icons>li:before {
 	top: 2.6em;
 	display: block;
 	font-size: 0.8em;
-	background: #878787;
+	background: #3c3c3c;
 	color: #e4e4e4;
 	width: 2em;
 	height: 2em;
@@ -1772,7 +1772,7 @@ ul.icons>li:first-child:before {
 form label {
 	font-weight: 600;
 	text-transform: uppercase;
-	color: #888;
+	color: #3c3c3c;
 	display: block;
 	margin: 0 0 1em 0;
 }
@@ -1810,20 +1810,20 @@ form textarea {
 }
 
 form ::-webkit-input-placeholder {
-	color: #555 !important;
+	color: #3c3c3c !important;
 	line-height: 1.35em;
 }
 
 form :-moz-placeholder {
-	color: #555 !important;
+	color: #3c3c3c !important;
 }
 
 form ::-moz-placeholder {
-	color: #555 !important;
+	color: #3c3c3c !important;
 }
 
 form :-ms-input-placeholder {
-	color: #555 !important;
+	color: #3c3c3c !important;
 }
 
 form ::-moz-focus-inner {
@@ -1855,7 +1855,7 @@ table th {
 }
 
 table thead {
-	background: #878787;
+	background: #3c3c3c;
 	color: #fff;
 	font-weight: 400;
 	text-transform: uppercase;
@@ -1884,7 +1884,7 @@ button,
 	-webkit-appearance: none;
 	position: relative;
 	display: inline-block;
-	background: #ed786a;
+	background: #b81d24;
 	color: #fff !important;
 	text-transform: uppercase;
 	border-radius: 4px;
@@ -1915,7 +1915,7 @@ input[type="submit"]:hover,
 input[type="reset"]:hover,
 button:hover,
 .button:hover {
-	background: #fd887a;
+	background:#221F1F;
 }
 
 input[type="button"]:active,
@@ -1923,7 +1923,7 @@ input[type="submit"]:active,
 input[type="reset"]:active,
 button:active,
 .button:active {
-	background: #ed786a;
+	background: #b81d24;
 }
 
 input[type="button"].alt,
@@ -2039,7 +2039,7 @@ button.alt:active,
 #header h1 {
 	font-family: 'Arvo';
 	font-weight: 700;
-	color: #ed786a;
+	color: #b81d24;
 	text-shadow: 0.05em 0.075em 0 rgba(0, 0, 0, 0.1);
 	font-size: 3em;
 	letter-spacing: 13px;
@@ -2052,7 +2052,7 @@ button.alt:active,
 #header p {
 	text-transform: uppercase;
 	font-weight: 400;
-	color: #888;
+	color: #3c3c3c;
 	margin: 2.5em 0 0 0;
 	font-size: 0.85em;
 	letter-spacing: 3px;
@@ -2128,13 +2128,13 @@ button.alt:active,
 
 #nav>ul>li.active>a:before,
 #nav>ul>li:hover>a:before {
-	background: #ED786A;
+	background: #b81d24;
 	color: #fff;
 }
 
 #nav>ul>li.active>a>span,
 #nav>ul>li:hover>a>span {
-	color: #ED786A;
+	color: #b81d24;
 }
 
 .dropotron {
@@ -2175,7 +2175,7 @@ button.alt:active,
 	top: -0.75em;
 	border-left: solid 0.75em rgba(255, 255, 255, 0);
 	border-right: solid 0.75em rgba(255, 255, 255, 0);
-	border-bottom: solid 0.75em #ccc;
+	border-bottom: solid 0.75em #fff;
 }
 
 .dropotron span,
@@ -2204,7 +2204,7 @@ button.alt:active,
 	-webkit-transition: color 0.25s ease-in-out, border-bottom-color 0.25s ease-in-out;
 	-ms-transition: color 0.25s ease-in-out, border-bottom-color 0.25s ease-in-out;
 	transition: color 0.25s ease-in-out, border-bottom-color 0.25s ease-in-out;
-	color: #ed786a;
+	color: #b81d24;
 }
 
 /* Features */
@@ -2321,7 +2321,7 @@ button.alt:active,
 #sidebar>section,
 #sidebar>article {
 	border-top: solid 2px #e5e5e5;
-	box-shadow: inset 0px 8px 0px 0px #fff, inset 0px 10px 0px 0px #e5e5e5;
+	box-shadow: inset 0px 8px 0px 0px #fff, inset 0px 10px 0px 0px #fff;
 	margin: 5em 0 0 0;
 	padding: 5em 0 0 0;
 }
@@ -2336,7 +2336,7 @@ button.alt:active,
 
 /* Footer */
 footer {
-	background: #f5f5f5;
+	background: #fff;
 	padding: 10px;
 	align-items: center;
 }
@@ -2347,12 +2347,12 @@ footer p {
 }
 
 footer a {
-	color: #000;
+	color: #3c3c3c;
 	text-decoration: none;
 }
 
 footer a:hover {
-	color: #ED786A;
+	color: #b81d24;
 }
 
 footer .github-icon {
@@ -2367,7 +2367,7 @@ footer .github-icon {
 /* Copyright */
 
 #copyright {
-	border-top: solid 2px #e5e5e5;
+	border-top: solid 2px #fff;
 	text-align: center;
 	margin-top: 6em;
 	padding-top: 4em;
@@ -2566,7 +2566,7 @@ footer .github-icon {
 		display: block;
 		width: 60px;
 		height: 40px;
-		background: rgba(232, 232, 232, 0.9);
+		background: #fff;
 		border-radius: 4px;
 		position: absolute;
 		left: 5px;
@@ -2603,18 +2603,18 @@ footer .github-icon {
 		top: 0;
 		width: 275px;
 		z-index: 10002;
-		background: #444;
+		background: #3c3c3c;
 		border-right: solid 2px #3c3c3c;
 		font-weight: 400;
 		text-transform: uppercase;
-		color: #888;
+		color: #3c3c3c;
 		letter-spacing: 2px;
 		font-size: 0.85em;
 	}
 
 	#navPanel .link {
 		display: block;
-		color: #ddd;
+		color: #fff;
 		text-decoration: none;
 		height: 44px;
 		line-height: 44px;
