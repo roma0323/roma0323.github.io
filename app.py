@@ -22,23 +22,25 @@ SAMPLE_SPREADSHEET_ID = "1kd8gloSg7VE0aXvaSzBOqVDAX3nKfRXsoQBLZz_i1zY"
 # # SAMPLE_SPREADSHEET_ID = ""
 # SAMPLE_RANGE_NAME = "TV_Shows"
 # SAMPLE_RANGE_NAME = ""
-
+sheet = None
+df_netflix_titles = None
 
 app = Flask(__name__)
 
 def init():
     SAMPLE_RANGE_NAME = "netflix_titles"
     global df_netflix_titles
-    df_netflix_titles = get_sheet(SAMPLE_SPREADSHEET_ID,SAMPLE_RANGE_NAME)
-    SAMPLE_RANGE_NAME = "disney_plus_titles"
-    global df_disney_plus_titles
-    df_disney_plus_titles = get_sheet(SAMPLE_SPREADSHEET_ID,SAMPLE_RANGE_NAME)
-    SAMPLE_RANGE_NAME = "amazon_prime_titles"
-    global df_amazon_prime_titles
-    df_amazon_prime_titles = get_sheet(SAMPLE_SPREADSHEET_ID,SAMPLE_RANGE_NAME)
-    SAMPLE_RANGE_NAME = "hulu_titles"
-    global df_hulu_titles
-    df_hulu_titles = get_sheet(SAMPLE_SPREADSHEET_ID,SAMPLE_RANGE_NAME)
+    if df_netflix_titles is None:
+        df_netflix_titles = get_sheet(SAMPLE_SPREADSHEET_ID,SAMPLE_RANGE_NAME)
+        SAMPLE_RANGE_NAME = "disney_plus_titles"
+        global df_disney_plus_titles
+        df_disney_plus_titles = get_sheet(SAMPLE_SPREADSHEET_ID,SAMPLE_RANGE_NAME)
+        SAMPLE_RANGE_NAME = "amazon_prime_titles"
+        global df_amazon_prime_titles
+        df_amazon_prime_titles = get_sheet(SAMPLE_SPREADSHEET_ID,SAMPLE_RANGE_NAME)
+        SAMPLE_RANGE_NAME = "hulu_titles"
+        global df_hulu_titles
+        df_hulu_titles = get_sheet(SAMPLE_SPREADSHEET_ID,SAMPLE_RANGE_NAME)
     return None
 
 
@@ -87,14 +89,15 @@ def rating():
     SAMPLE_SPREADSHEET_ID = "1kd8gloSg7VE0aXvaSzBOqVDAX3nKfRXsoQBLZz_i1zY"
     SAMPLE_RANGE_NAME = "TV_Shows"
     global sheet
-    sheet = get_sheet(SAMPLE_SPREADSHEET_ID,SAMPLE_RANGE_NAME) 
+    if sheet is None:
+        sheet = get_sheet(SAMPLE_SPREADSHEET_ID,SAMPLE_RANGE_NAME) 
 
-    write_in_js(sheet,'Netflix')
-    write_in_js(sheet,'Hulu')
-    write_in_js(sheet,'Prime Video')
-    write_in_js(sheet,'Disney+')
     
-    return render_template('vedioRating/test.html')
+    return render_template('vedioRating/vedioRating.html',
+                            Netflix_IMDb_rate = write_in_js(sheet,'Netflix'),
+                            Hulu_IMDb_rate = write_in_js(sheet,'Hulu'),
+                            Prime_IMDb_rate = write_in_js(sheet,'Prime Video'),
+                            Disney_IMDb_rate = write_in_js(sheet,'Disney+'))
 
 def write_in_js(sheet,OTT_platform):
      # filtered_data = sheet[sheet['IMDb']!= '']
@@ -104,6 +107,12 @@ def write_in_js(sheet,OTT_platform):
 
     # Extract the values from the "IMDb" column that satisfy the conditions
     imdb_list = filtered_data['IMDb'].tolist()
+
+    number_list = [float(num) for num in imdb_list]
+
+    average_rate = round(sum(number_list) / len(number_list),2)
+    print(f'{OTT_platform} vedio average IMDb rate is:', average_rate)
+
 
     import json
 
@@ -129,6 +138,8 @@ def write_in_js(sheet,OTT_platform):
             js_file.write(f'const {OTT_platform}_list = ')
             js_file.write(json_data)
             js_file.write(';')
+
+    return average_rate        
 
 # 睿弘
 @app.route("/trending")
