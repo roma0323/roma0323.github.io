@@ -12,7 +12,7 @@
 
 				<!-- Logo -->
 				<h1 id="logo">Bar Chart Race</h1>
-				<P>Observation for the quantity of seriver&movie on Platform Every Year</P>
+				<P>Observation for the trending of seriver&movie on Platform Every Year</P>
 
 			</div>
 		</section>
@@ -29,10 +29,7 @@
 							</h2>
 						</header>
 						<p style="text-align: center;">
-							When I first started this class and learned that we would be using Plotly for development, I became very interested in creating animations using it.
-
-							<br><br>
-					I was already fascinated by this visualization technique, so I searched for online resources and applied it to the existing dataset to see what exciting results would emerge.
+							影集豐富程度是一個OTT平台的重要指標，也是影響消費者選擇平台的重要因素之一。因此，我們想要透過資料視覺化的方式，觀察各平台影集數量的變化趨勢與影集總數。
 						</p>
 					</article>
 				</div>
@@ -52,10 +49,8 @@
 							</h2>
 						</header>
 						<div>
-							<p>
-								This bar chart race is designed to showcase the total movie&series for each platform on a
-								yearly basis. Therefore, it
-								displays information for one year at a time
+							<p style="text-align: center;">
+								此長條圖動畫展示平台每年「擁有」的影視作品總數
 							</p>
 						</div>
     <div>                        <script type="text/javascript">window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
@@ -71,14 +66,69 @@
                         }).then(function(){
                             Plotly.animate('1273b46d-ae7e-49af-a99d-9278a69b1407', null);
                         })                };                            </script>        </div><br>
+						
+
+
+						<header>
+							<h2>
+								Bar Chart
+							</h2>
+						</header>
+						<div>
+							<p style="text-align: center;">
+								這個長條圖展示每個平台當「當年收購」的影視作品數量
+							</p>
+						</div>
+
+						<div id="test_myDiv">
+
+						<script>
+							var hulu_date_list = {{ hulu_date_list | safe }};
+							var hulu_number_list = {{ hulu_number_list | safe }};
+							var netflix_date_list = {{ netflix_date_list | safe }};
+							var netflix_number_list = {{ netflix_number_list | safe }};
+							// Now you can use dateList and numberList in your JavaScript
+							console.log(hulu_date_list);
+							console.log(hulu_number_list);
+
+							var trace1 = 
+							{
+								x: netflix_date_list,
+								y: netflix_number_list,
+								type: 'scatter',
+								name:'netflix',
+								marker:{
+									color:'#E50914'
+								}
+
+							};
+							var trace2 = 
+							{
+								x: hulu_date_list,
+								y: hulu_number_list,
+								type: 'scatter',
+								name:'hulu',
+								marker:{
+									color:'#1CE783'
+								}
+														};
+							
+							var data =[trace1,trace2];
+			
+							Plotly.newPlot('test_myDiv', data);
+						</script>
+
 						<hr color="#FFF" style="align-items: center; margin-bottom: 0.2%;">
 						<hr color="#FFF" style="align-items: center; margin-bottom: 4em;">
+
 						<div class="Observation">
 							<h2>My Observation</h2>
-							<p>
-							In this bar chart race, it is possible to observe that before 2017 ,hulu's series and movie is more than netflix,but after then ,netflix buy series and movie in a dramatically speed.
-							I searched the news: Netflix finishes its massive migration of its data servers to AWS,then Netflix announced a major international expansion into 130 new territories on 2016.
-							It prove the importance of cloud in OTT indusrty.
+							<p style="text-align: center;">
+								結合兩張圖，可以觀察到在2016年，Netflix以驚人的速度開始購買影視作品，並在2017，Netflix的影視作品數量超越Hulu。
+
+								查了新聞：Netflix完成了將其數據服務器大規模遷移到AWS的工作，然後Netflix在2016年宣布了對130個新地區的重大國際擴展。
+								
+								這證實了雲在OTT行業中的重要性。
 
 							</p>
 						</div>
@@ -89,11 +139,7 @@
 						<div class="Improvements">
 							<h2>Some Improvements</h2>
 							<p>
-								Since the main modification is based on the official plotly example, the flexibility
-								is limited. It means that it's not possible to make specific modifications to
-								individual functionalities. If needed, the only option is to rewrite all the
-								functionalities. Therefore, this can serve as a starting point for exploring
-								more plotly functionalities through the bar chart race.
+								❶  數據源擴展： 加入更多來源或平台的數據，以擴展比較範圍，這樣可以更全面地了解整個OTT行業的變化趨勢，而不僅僅是Hulu和Netflix。
 							</p>
 						</div>
 
