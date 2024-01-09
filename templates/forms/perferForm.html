@@ -1,10 +1,15 @@
 <html>
+	<head>
+		<link rel="stylesheet" href="../static/assets/css/formStyle.css">
+		
+	</head>
 <body>
 <fieldset>
 	<legend>give me a flim</legend>
 	<form action="/perferGet" method="post" >
 
 	<div class="outterText">
+		<div class="outter">
 		<div class="center"><div class="title">IMDB</div></div>
 		<div class="radioClass">
 			<input type="radio" id="IMDB" name="IMDB" value="9.5">
@@ -30,7 +35,7 @@
 			<input type="radio" id="IMDB" name="IMDB" value="0">
 			<label>no perference</label>
 		</div>
-
+		</div>
 
 	</div>
 
@@ -103,9 +108,10 @@
 		<label for="Disney">Disney+</label>
 	</div>
     </div>
+	<div class="outter">
 	<input type="submit"value="submit" class="center btn">
+	</div>
 </form>
 </fieldset>
 </body>
 </html>
-<style>
