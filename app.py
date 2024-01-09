@@ -94,7 +94,7 @@ def rating():
     write_in_js(sheet,'Prime Video')
     write_in_js(sheet,'Disney+')
     
-    return render_template('vedioRating/test.html')
+    return render_template('vedioRating/vedioRating.html')
 
 def write_in_js(sheet,OTT_platform):
      # filtered_data = sheet[sheet['IMDb']!= '']

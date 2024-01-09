@@ -1,282 +1,170 @@
 {% extends 'template.html' %}
 {% block title %}Home Page{% endblock %}
+{% block link %}<link rel="stylesheet" href="publisher/style.css" />{% endblock %}
 
 {% block content %}
-<div id="page-wrapper">
-	<!-- Header -->
-	<section id="header">
-		<div class="container">
-			<!-- Logo -->
-			<h1 id="logo" style="margin-bottom: 2.5%; line-height: 100%;"><a href="/index.html">Style Compare</a></h1>
-			<h2>Rating Analysis</h2>
-			
-		</div>
-	</section>
 
-	<!-- Main -->
-	<div id="myGraph1"></div>
-	<div id="myGraph2"></div>
-	<div id="myGraph3"></div>
-	<div id="myGraph4"></div>
-	<!--把你的code寫在這-->
+	<div id="page-wrapper">
 
-	<div id="listin_netflix_json" style="display: none;">{{ listin_netflix_json }}</div>
-	<div id="listin_disney_json" style="display: none;">{{ listin_disney_json }}</div>
-	<div id="listin_amazon_json" style="display: none;">{{ listin_amazon_json }}</div>
-	<div id="listin_hulu_json" style="display: none;">{{ listin_hulu_json }}</div>
-	<div id="netflix_movie_tv_count_json" style="display: none;">{{ netflix_movie_tv_count_json }}</div>
-	<div id="disney_movie_tv_count_json" style="display: none;">{{ disney_movie_tv_count_json }}</div>
-	<div id="amazon_movie_tv_count_json" style="display: none;">{{ amazon_movie_tv_count_json }}</div>
-	<div id="hulu_movie_tv_count_json" style="display: none;">{{ hulu_movie_tv_count_json }}</div>
-	<div id="season_count_json" style="display: none;">{{ season_count_json }}</div>
-</div>
-<script>
-// Get the data elements by their IDs
-var netflixDataElement = document.getElementById("listin_netflix_json").textContent;
-var disneyDataElement = document.getElementById("listin_disney_json").textContent;
-var amazonDataElement = document.getElementById("listin_amazon_json").textContent;
-var huluDataElement = document.getElementById("listin_hulu_json").textContent;
-var netflixMovieTvCountElement = document.getElementById("netflix_movie_tv_count_json").textContent;
-var disneyMovieTvCountElement = document.getElementById("disney_movie_tv_count_json").textContent;
-var amazonMovieTvCountElement = document.getElementById("amazon_movie_tv_count_json").textContent;
-var huluMovieTvCountElement = document.getElementById("hulu_movie_tv_count_json").textContent;
-var seasonCountElement = document.getElementById("season_count_json").textContent;
+		<!-- Header -->
+		<section id="header">
+			<div class="container">
 
+				<!-- Logo -->
+				<h1 id="logo">Bar Chart Race</h1>
+				<P>Observation for the quantity of seriver&movie on Platform Every Year</P>
 
-//第一個圖表
-let evaluation_ratio1_1 = [
-	{
-        "type":"TVShow",
-        "count":10
-    },
-    {
-        "type":"Movie",
-        "count":30
-    }
-];
-let evaluation_ratio1_2 = [
-	{
-        "type":"TVShow",
-        "count":10
-    },
-    {
-        "type":"Movie",
-        "count":30
-    }
-];
-let evaluation_ratio1_3 = [
-    {
-        "type":"TVShow",
-        "count":10
-    },
-    {
-        "type":"Movie",
-        "count":30
-    }
-];
-let evaluation_ratio1_4 = [
-	{
-        "type":"TVShow",
-        "count":10
-    },
-    {
-        "type":"Movie",
-        "count":30
-    }
-];
+			</div>
+		</section>
 
-let myGraph1 = document.getElementById('myGraph1');
-let trace1_1 = {};
-trace1_1.type = "pie";
-trace1_1.title = "Netflix";
-trace1_1.hole = 0.5;
-trace1_1.labels = [];
-trace1_1.values = [];
-trace1_1.marker = { colors: ['#B81D24', '#221F1F'] };
-trace1_1.domain = {
-    row:0,
-    column:0
-};
-for(let x = 0; x < evaluation_ratio1_1.length; x++){
-    trace1_1.labels[x] = evaluation_ratio1_1[x]['name'];
-    trace1_1.values[x] = evaluation_ratio1_1[x]['count'];
-}
+		<section id="main">
+			<div class="container">
+				<div id="content">
 
-let trace1_2 = {};
-trace1_2.type = "pie";
-trace1_2.title = "Disney Plus";
-trace1_2.hole = 0.5;
-trace1_2.labels = [];
-trace1_2.values = [];
-trace1_2.marker = { colors: ['#142850','#221F1F'] };
-trace1_2.domain = {
-    row:0,
-    column:1
-};
+					<!-- Post -->
+					<article class="box post">
+						<header>
+							<h2>
+								Motivation
+							</h2>
+						</header>
+						<p style="text-align: center;">
+							When I first started this class and learned that we would be using Plotly for development, I became very interested in creating animations using it.
 
-for(let x=0; x<evaluation_ratio1_2.length; x++){
-    trace1_2.labels[x] = evaluation_ratio1_2[x]['name'];
-    trace1_2.values[x] = evaluation_ratio1_2[x]['count'];
-}
+							<br><br>
+					I was already fascinated by this visualization technique, so I searched for online resources and applied it to the existing dataset to see what exciting results would emerge.
+						</p>
+					</article>
+				</div>
+			</div>
+		</section>
 
-let trace1_3 = {};
-trace1_3.type = "pie";
-trace1_3.title = "Hulu";
-trace1_3.hole = 0.5;
-trace1_3.labels = [];
-trace1_3.values = [];
-trace1_3.marker = { colors: ['#1ce783', '#221F1F'] };
-trace1_3.domain = {
-    row:0,
-    column:2
-};
+		<!-- Main -->
+		<section id="main">
+			<div class="container">
+				<div id="content">
 
-for(let x = 0; x < evaluation_ratio1_3.length; x++){
-    trace1_3.labels[x] = evaluation_ratio1_3[x]['name'];
-    trace1_3.values[x] = evaluation_ratio1_3[x]['count'];
-}
-
-let trace1_4 = {};
-trace1_4.type = "pie";
-trace1_4.title = "Prime Video";
-trace1_4.hole = 0.5;
-trace1_4.labels = [];
-trace1_4.values = [];
-trace1_4.marker = { colors: ['#3C78B4', '#221F1F'] };
-trace1_4.domain = {
-    row:0,
-    column:3
-};
-
-for(let x = 0 ; x < evaluation_ratio1_4.length; x++){
-    trace1_4.labels[x] = evaluation_ratio1_4[x]['name'];
-    trace1_4.values[x] = evaluation_ratio1_4[x]['count'];
-}
-
-let data1 = [];
-data1.push(trace1_1);
-data1.push(trace1_2);
-data1.push(trace1_3);
-data1.push(trace1_4);
-
-let layout1 = {
-    margin:{
-        t:10,
-        l:0,
-    },
-    grid:{
-        rows:1,
-        columns:4
-    }
-};
-Plotly.newPlot(myGraph1, data1, layout1);
+					<!-- Post -->
+					<article class="box post">
+						<header>
+							<h2>
+								Bar Chart Race
+							</h2>
+						</header>
+						<div>
+							<p>
+								This bar chart race is designed to showcase the total movie&series for each platform on a
+								yearly basis. Therefore, it
+								displays information for one year at a time
+							</p>
+						</div>
 
 
-//第三個圖表
-let set3_1 = [
-    [1,10,"A1"],
-    [2,15,"A2"],
-    [3,13,"A3"],
-    [4,17,"A4"]
-];
 
-let set3_2 = [
-    [2,16,"B1"],
-    [3,5,"B2"],
-    [4,11,"B3"],
-    [5,9,"B4"]
-];
 
-let set3_3 = [
-    [1,12,"C1"],
-    [2,9,"C2"],
-    [3,15,"C3"],
-    [4,12,"C4"]
-];
 
-let myGraph3 = document.getElementById('myGraph3');
+	<div class="controls" style="margin: 3%;">
+		<button class="button" data-name="Netflix">Netflix</button>
+		<button class="button" data-name="Hulu">Hulu</button>
+		<button class="button" data-name="Amazon_Prime">Amazon Prime</button>
+		<button class="button" data-name="Disney">Disney</button>
+	</div>
+	<!-- <div class="centered-div">dddddd</div> -->
+	<div class="chart">
+		<div id="myGraph" ></div>
+		<div id="myGraph2" style="display: none"></div>
+		<div id="myGraph3" style="display: none;"></div>
+		<div id="myGraph4" style="display: none;"></div>
+	</div>
+		
 
-let trace3_1 = {};
-trace3_1.mode = "markers+text";
-trace3_1.type = "scatter";
-trace3_1.name = "Netflix Movie";
-trace3_1.marker = {
-    size:5
-};
-trace3_1.x = [];
-trace3_1.y = [];
-trace3_1.text = [];
-trace3_1.textposition = "bottom center";
-trace3_1.textfont = {
-    family:"Raleway, sans-serif",
-    size:8
-};
 
-for(let i = 0; i < set3_1.length; i++){
-    trace3_1.x[i] = set3_1[i][0];
-    trace3_1.y[i] = set3_1[i][1];
-    trace3_1.text[i] = set3_1[i][2];
-}
+	<br>
+						<hr color="#FFF" style="align-items: center; margin-bottom: 0.2%;">
+						<hr color="#FFF" style="align-items: center; margin-bottom: 4em;">
+						<div class="Observation">
+							<h2>My Observation</h2>
+							<p>
+							In this bar chart race, it is possible to observe that before 2017 ,hulu's series and movie is more than netflix,but after then ,netflix buy series and movie in a dramatically speed.
+							I searched the news: Netflix finishes its massive migration of its data servers to AWS,then Netflix announced a major international expansion into 130 new territories on 2016.
+							It prove the importance of cloud in OTT indusrty.
 
-let trace3_2 = {};
-trace3_2.mode = "lines+text";
-trace3_2.type = "scatter";
-trace3_2.name = "Netflix TVShow";
-trace3_2.x = [];
-trace3_2.y = [];
-trace3_2.text = [];
-trace3_2.textposition = "bottom center";
-trace3_2.textfont = {
-    family:"Raleway, sans-serif",
-    size:8
-};
-for(let i = 0; i < set3_2.length; i++){
-    trace3_2.x[i] = set3_2[i][0];
-    trace3_2.y[i] = set3_2[i][1];
-    trace3_2.text[i] = set3_2[i][2];
-}
+							</p>
+						</div>
 
-let trace3_3 = {};
-trace3_3.mode = "lines+markers+text";
-trace3_3.type = "scatter";
-trace3_3.name = "Disney Plus Movie";
-trace3_3.marker = {
-    size:5
-};
-trace3_3.x = [];
-trace3_3.y = [];
-trace3_3.text = [];
-trace3_3.textposition = "bottom center";
-trace3_3.textfont = {
-    family:"Raleway, sans-serif",
-    size:8,
-	color:"#121212"
-};
-for(let i = 0; i < set3_3.length; i++){
-    trace3_3.x[i] = set3_3[i][0];
-    trace3_3.y[i] = set3_3[i][1];
-    trace3_3.text[i] = set3_3[i][2];
-}
+						<hr color="#FFF" style="align-items: center; margin-bottom: 0.2%;">
+						<hr color="#FFF" style="align-items: center; margin-bottom: 4em;">
 
-let data3 = [];
-data3.push(trace3_1);
-data3.push(trace3_2);
-data3.push(trace3_3);
+						<div class="Improvements">
+							<h2>Some Improvements</h2>
+							<p>
+								Since the main modification is based on the official plotly example, the flexibility
+								is limited. It means that it's not possible to make specific modifications to
+								individual functionalities. If needed, the only option is to rewrite all the
+								functionalities. Therefore, this can serve as a starting point for exploring
+								more plotly functionalities through the bar chart race.
+							</p>
+						</div>
 
-let layout3 = {
-    margin:{
-        t:50
-    },
-    xaxis:{
-        range:[0,6]
-    },
-    yaxis:{
-        range:[0,25]
-    },
-    title:'SCATTER & LINE'
-};
+					</article>
 
-Plotly.newPlot(myGraph3, data3, layout3);
+				</div>
+			</div>
+		</section>
 
-</script>
+		
+	</div>
+
+
+	<style>
+		chart {
+		  display: flex;
+		  justify-content: center;
+		  align-items: center;
+		  height: 100vh;
+		  margin: 0;
+		}
+	  </style>
+
+
+	<script src="https://cdn.plot.ly/plotly-2.24.1.min.js"></script>
+	<script src="../../static/assets/js/data.js"></script>
+	<script src="../../static/assets/js/plotly_main.js"></script>
+
+	<script>
+		// Function to show or hide the divs based on button clicks
+		document.querySelectorAll('.button').forEach(button => {
+			button.addEventListener('click', () => {
+				const region = button.getAttribute('data-name');
+				const graphDivs = document.querySelectorAll('[id^="myGraph"]'); // Get all divs with ID starting with 'myGraph'
+				graphDivs.forEach(div => {
+					div.style.display = 'none'; // Hide all divs initially
+				});
+
+				// Show the specific div based on the button clicked
+				switch (region) {
+					case 'Netflix':
+						document.getElementById('myGraph').style.display = 'block';
+						break;
+					case 'Hulu':
+						document.getElementById('myGraph2').style.display = 'block';
+
+						break;
+					case 'Amazon_Prime':
+						document.getElementById('myGraph3').style.display = 'block';
+						break;
+					case 'Disney':
+						document.getElementById('myGraph4').style.display = 'block';
+
+						break;	
+					// Add cases for other regions...
+					default:
+						break;
+				}
+			});
+		});
+
+
+	</script>
+
 {% endblock %}
