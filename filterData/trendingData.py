@@ -4,14 +4,14 @@ import plotly.express as px
 import pandas as pd
 # import streamlit as st
 
-def get_quantity_by_year():
-    hulu_date = get_OTT_data("1kd8gloSg7VE0aXvaSzBOqVDAX3nKfRXsoQBLZz_i1zY","hulu_titles")   #get hulu date data
+def get_quantity_by_year(OTT_platform):
+    ott_date_data = get_OTT_data("1kd8gloSg7VE0aXvaSzBOqVDAX3nKfRXsoQBLZz_i1zY",OTT_platform)   #get hulu date data
 
 
     from collections import Counter
 
     # Count occurrences of each date
-    date_counts = Counter(hulu_date)
+    date_counts = Counter(ott_date_data)
 
     # Extract unique dates and their counts
     date_list = list(date_counts.keys())

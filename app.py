@@ -87,10 +87,13 @@ def style():
 # 睿弘
 @app.route("/trending")
 def trending():
-    date_list,number_list=get_quantity_by_year()
+    hulu_date_list,hulu_number_list=get_quantity_by_year("hulu_titles")
+    netflix_date_list,netflix_number_list=get_quantity_by_year("netflix_titles")
     return render_template('vedioTrending/vedioTrending.html',
-                           date_list=date_list,
-                           number_list=number_list)
+                           hulu_date_list=hulu_date_list,
+                           hulu_number_list=hulu_number_list,
+                           netflix_date_list=netflix_date_list,
+                           netflix_number_list=netflix_number_list)
 
 
 # 廖老大

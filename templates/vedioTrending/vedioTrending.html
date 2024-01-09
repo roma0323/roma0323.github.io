@@ -77,19 +77,35 @@
 						<div id="test_myDiv">
 
 						<script>
-                
+							var hulu_date_list = {{ hulu_date_list | safe }};
+							var hulu_number_list = {{ hulu_number_list | safe }};
+							var netflix_date_list = {{ netflix_date_list | safe }};
+							var netflix_number_list = {{ netflix_number_list | safe }};
+							// Now you can use dateList and numberList in your JavaScript
+							console.log(hulu_date_list);
+							console.log(hulu_number_list);
+
 							var trace1 = 
 							{
-								x: ['2013-10-04', '2013-11-04', '2013-12-04'],
-								y: [1, 3, 6],
-								type: 'scatter'
+								x: netflix_date_list,
+								y: netflix_number_list,
+								type: 'scatter',
+								name:'netflix',
+								marker:{
+									color:'#E50914'
+								}
+
 							};
 							var trace2 = 
 							{
-								x: ['2013-9-04', '2013-10-04', '2013-12-04'],
-								y: [1, 3, 9],
-								type: 'scatter'
-							};
+								x: hulu_date_list,
+								y: hulu_number_list,
+								type: 'scatter',
+								name:'hulu',
+								marker:{
+									color:'#1CE783'
+								}
+														};
 							
 							var data =[trace1,trace2];
 			
