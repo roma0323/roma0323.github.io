@@ -22,9 +22,9 @@ SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
 
 # The ID and range of a sample spreadsheet.
 SAMPLE_SPREADSHEET_ID = "1kd8gloSg7VE0aXvaSzBOqVDAX3nKfRXsoQBLZz_i1zY"
-# # SAMPLE_SPREADSHEET_ID = ""
-# SAMPLE_RANGE_NAME = "TV_Shows"
-# SAMPLE_RANGE_NAME = ""
+SAMPLE_SPREADSHEET_ID = ""
+SAMPLE_RANGE_NAME = "TV_Shows"
+SAMPLE_RANGE_NAME = ""
 sheet = None
 df_netflix_titles = None
 
