@@ -86,11 +86,21 @@ def style():
 def rating():
     SAMPLE_SPREADSHEET_ID = "1kd8gloSg7VE0aXvaSzBOqVDAX3nKfRXsoQBLZz_i1zY"
     SAMPLE_RANGE_NAME = "TV_Shows"
+    global sheet
     sheet = get_sheet(SAMPLE_SPREADSHEET_ID,SAMPLE_RANGE_NAME) 
-    # print(type(sheet))
 
-    # filtered_data = sheet[sheet['IMDb']!= '']
-    filtered_data = sheet[(sheet['Netflix'] == '1') & (sheet['IMDb']!= '')]
+    write_in_js(sheet,'Netflix')
+    write_in_js(sheet,'Hulu')
+    write_in_js(sheet,'Prime Video')
+    write_in_js(sheet,'Disney+')
+    
+    return render_template('vedioRating/test.html')
+
+def write_in_js(sheet,OTT_platform):
+     # filtered_data = sheet[sheet['IMDb']!= '']
+    
+
+    filtered_data = sheet[(sheet[OTT_platform] == '1') & (sheet['IMDb']!= '')]
 
     # Extract the values from the "IMDb" column that satisfy the conditions
     imdb_list = filtered_data['IMDb'].tolist()
@@ -99,14 +109,26 @@ def rating():
 
     # Convert the Python list to JSON string
     json_data = json.dumps(imdb_list)
+    variable_exists = False
 
-    # Writing JSON data to a file
-    with open('./static/assets/js/data.js', 'w') as js_file:
-        js_file.write('const set1 = ')
-        js_file.write(json_data)
-        js_file.write(';')
-    
-    return render_template('vedioRating/test.html')
+    if OTT_platform=='Prime Video':
+        OTT_platform='prime_video'
+    if OTT_platform=='Disney+':
+        OTT_platform='Disney'    
+
+    with open('./static/assets/js/data.js', 'r') as js_file:
+        for line in js_file:
+            if f'const {OTT_platform}_list =' in line:
+                variable_exists = True
+                break
+                
+    if not variable_exists:
+        # Writing JSON data to a file
+        with open('./static/assets/js/data.js', 'a') as js_file:
+            js_file.write('\n')
+            js_file.write(f'const {OTT_platform}_list = ')
+            js_file.write(json_data)
+            js_file.write(';')
 
 # 睿弘
 @app.route("/trending")
