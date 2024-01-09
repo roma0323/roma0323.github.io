@@ -11,7 +11,7 @@
 
 ## Who are we?
 
-我們是來自資管、客設的中央大學學生，我們結合課堂所學完成一份資料視覺化的期末專案。  
+我們是來自資管、客社的中央大學學生，我們結合課堂所學完成一份資料視覺化的期末專案。  
 
 ## Why to Choose this dataset?
 經過討論我們決定選擇我們有共興趣的OTT（Over-The-Top）平台，例如Netflix、Disney+、Hulu和Prime。我們將使用的資料集包含了這些平台上可用的電影和電視節目的信息，讓我們比較不同喜好的觀眾應該買哪家OTT平台。
@@ -39,7 +39,7 @@
 		<tr>
 			<td>王冠程</td>
 			<td>110403552</td>
-			<td>{分工}</td>
+			<td>Backend｜後段架設, 資料處理, Google sheet API<br>Frontend - Style｜使用者互動</td>
 		</tr>
 		<tr>
 			<td>李晨瑜</td>
