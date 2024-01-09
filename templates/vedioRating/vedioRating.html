@@ -11,8 +11,8 @@
 			<div class="container">
 
 				<!-- Logo -->
-				<h1 id="logo">Bar Chart Race</h1>
-				<P>Observation for the quantity of seriver&movie on Platform Every Year</P>
+				<h1 id="logo">Rating</h1>
+				<P>{{netflix_IMDb_rate}}</P>
 
 			</div>
 		</section>
@@ -71,12 +71,28 @@
 	</div>
 	<!-- <div class="centered-div">dddddd</div> -->
 	<div class="chart">
-		<div id="myGraph" ></div>
-		<div id="myGraph2" style="display: none"></div>
+		<div id="display_chart_netflix">
+			<div id="myGraph" ></div>
+			<P>Average Rate : {{Netflix_IMDb_rate}}</P>
+		</div>
+		<div id="display_chart_hulu" style="display: none;">
+			<div id="myGraph2" ></div>
+			<P>Average Rate : {{Hulu_IMDb_rate}}</P>
+		</div>
+		<div id="display_chart_prime"style="display: none;">
+			<div id="myGraph3" ></div>
+			<P>Average Rate : {{Prime_IMDb_rate}}</P>
+		</div>
+		<div id="display_chart_disney"style="display: none;">
+			<div id="myGraph4" ></div>
+			<P>Average Rate : {{Disney_IMDb_rate}}</P>
+		</div>
+
+		<!-- <div id="myGraph2" style="display: none"></div>
 		<div id="myGraph3" style="display: none;"></div>
-		<div id="myGraph4" style="display: none;"></div>
+		<div id="myGraph4" style="display: none;"></div> -->
 	</div>
-		
+
 
 
 	<br>
@@ -136,7 +152,7 @@
 		document.querySelectorAll('.button').forEach(button => {
 			button.addEventListener('click', () => {
 				const region = button.getAttribute('data-name');
-				const graphDivs = document.querySelectorAll('[id^="myGraph"]'); // Get all divs with ID starting with 'myGraph'
+				const graphDivs = document.querySelectorAll('[id^="display_chart"]'); // Get all divs with ID starting with 'myGraph'
 				graphDivs.forEach(div => {
 					div.style.display = 'none'; // Hide all divs initially
 				});
@@ -144,17 +160,17 @@
 				// Show the specific div based on the button clicked
 				switch (region) {
 					case 'Netflix':
-						document.getElementById('myGraph').style.display = 'block';
+						document.getElementById('display_chart_netflix').style.display = 'block';
 						break;
 					case 'Hulu':
-						document.getElementById('myGraph2').style.display = 'block';
+						document.getElementById('display_chart_hulu').style.display = 'block';
 
 						break;
 					case 'Amazon_Prime':
-						document.getElementById('myGraph3').style.display = 'block';
+						document.getElementById('display_chart_prime').style.display = 'block';
 						break;
 					case 'Disney':
-						document.getElementById('myGraph4').style.display = 'block';
+						document.getElementById('display_chart_disney').style.display = 'block';
 
 						break;	
 					// Add cases for other regions...

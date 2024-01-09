@@ -92,12 +92,12 @@ def rating():
     if sheet is None:
         sheet = get_sheet(SAMPLE_SPREADSHEET_ID,SAMPLE_RANGE_NAME) 
 
-    write_in_js(sheet,'Netflix')
-    write_in_js(sheet,'Hulu')
-    write_in_js(sheet,'Prime Video')
-    write_in_js(sheet,'Disney+')
     
-    return render_template('vedioRating/vedioRating.html')
+    return render_template('vedioRating/vedioRating.html',
+                            Netflix_IMDb_rate = write_in_js(sheet,'Netflix'),
+                            Hulu_IMDb_rate = write_in_js(sheet,'Hulu'),
+                            Prime_IMDb_rate = write_in_js(sheet,'Prime Video'),
+                            Disney_IMDb_rate = write_in_js(sheet,'Disney+'))
 
 def write_in_js(sheet,OTT_platform):
      # filtered_data = sheet[sheet['IMDb']!= '']
@@ -107,6 +107,12 @@ def write_in_js(sheet,OTT_platform):
 
     # Extract the values from the "IMDb" column that satisfy the conditions
     imdb_list = filtered_data['IMDb'].tolist()
+
+    number_list = [float(num) for num in imdb_list]
+
+    average_rate = round(sum(number_list) / len(number_list),2)
+    print(f'{OTT_platform} vedio average IMDb rate is:', average_rate)
+
 
     import json
 
@@ -132,6 +138,8 @@ def write_in_js(sheet,OTT_platform):
             js_file.write(f'const {OTT_platform}_list = ')
             js_file.write(json_data)
             js_file.write(';')
+
+    return average_rate        
 
 # 睿弘
 @app.route("/trending")
