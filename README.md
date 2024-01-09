@@ -6,7 +6,7 @@
 - Topic: OTT Platform Analysis
 
 <div align="center"> 
-    <img src="./images/home.png" width="600px;" alt=""/>
+    <img src="/static/images/home.png" width="600px;" alt=""/>
 </div>
 
 ## Who are we?
