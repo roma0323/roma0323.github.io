@@ -1,24 +1,28 @@
 <html>
+<head>
+    <link rel="stylesheet" href="../static/assets/css/formStyle.css">
+    
+</head>
 <body>
 <fieldset>
 	<legend>add to database</legend>
 	<form action="/add" method="post" >
-	<div class="outterText">
+	<div class="outter">
 		<div class="center"><div class="title">film name</div></div>
 		<input type="text" id="filmName" name="filmName"  size="10">
 	</div>
 
-	<div class="outterText">
+	<div class="outter">
 		<div class="center"><div class="title">year</div></div>
 		<input type="text" id="year" name="year"  size="10">
 	</div>
 
-	<div class="outterText">
+	<div class="outter">
 		<div class="center"><div class="title">IMDB</div></div>
 		<input type="text" id="IMDB" name="IMDB" size="10">
 	</div>
 
-	<div class="outterText">
+	<div class="outter">
 		<div class="center"><div class="title">Rotten Tomatoes</div></div>
 		<input type="text" id="RottenTomatoes" name="RottenTomatoes" size="10">
 	</div>
@@ -62,9 +66,10 @@
 		<label for="Disney">Disney+</label>
 	</div>
     </div>
+	<div class="outter">
 	<input type="submit"value="submit" class="center btn">
+	</div>
 </form>
 </fieldset>
 </body>
 </html>
-<style>
