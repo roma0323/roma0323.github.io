@@ -22,23 +22,25 @@ SAMPLE_SPREADSHEET_ID = "1kd8gloSg7VE0aXvaSzBOqVDAX3nKfRXsoQBLZz_i1zY"
 # # SAMPLE_SPREADSHEET_ID = ""
 # SAMPLE_RANGE_NAME = "TV_Shows"
 # SAMPLE_RANGE_NAME = ""
-
+sheet = None
+df_netflix_titles = None
 
 app = Flask(__name__)
 
 def init():
     SAMPLE_RANGE_NAME = "netflix_titles"
     global df_netflix_titles
-    df_netflix_titles = get_sheet(SAMPLE_SPREADSHEET_ID,SAMPLE_RANGE_NAME)
-    SAMPLE_RANGE_NAME = "disney_plus_titles"
-    global df_disney_plus_titles
-    df_disney_plus_titles = get_sheet(SAMPLE_SPREADSHEET_ID,SAMPLE_RANGE_NAME)
-    SAMPLE_RANGE_NAME = "amazon_prime_titles"
-    global df_amazon_prime_titles
-    df_amazon_prime_titles = get_sheet(SAMPLE_SPREADSHEET_ID,SAMPLE_RANGE_NAME)
-    SAMPLE_RANGE_NAME = "hulu_titles"
-    global df_hulu_titles
-    df_hulu_titles = get_sheet(SAMPLE_SPREADSHEET_ID,SAMPLE_RANGE_NAME)
+    if df_netflix_titles is None:
+        df_netflix_titles = get_sheet(SAMPLE_SPREADSHEET_ID,SAMPLE_RANGE_NAME)
+        SAMPLE_RANGE_NAME = "disney_plus_titles"
+        global df_disney_plus_titles
+        df_disney_plus_titles = get_sheet(SAMPLE_SPREADSHEET_ID,SAMPLE_RANGE_NAME)
+        SAMPLE_RANGE_NAME = "amazon_prime_titles"
+        global df_amazon_prime_titles
+        df_amazon_prime_titles = get_sheet(SAMPLE_SPREADSHEET_ID,SAMPLE_RANGE_NAME)
+        SAMPLE_RANGE_NAME = "hulu_titles"
+        global df_hulu_titles
+        df_hulu_titles = get_sheet(SAMPLE_SPREADSHEET_ID,SAMPLE_RANGE_NAME)
     return None
 
 
@@ -87,7 +89,8 @@ def rating():
     SAMPLE_SPREADSHEET_ID = "1kd8gloSg7VE0aXvaSzBOqVDAX3nKfRXsoQBLZz_i1zY"
     SAMPLE_RANGE_NAME = "TV_Shows"
     global sheet
-    sheet = get_sheet(SAMPLE_SPREADSHEET_ID,SAMPLE_RANGE_NAME) 
+    if sheet is None:
+        sheet = get_sheet(SAMPLE_SPREADSHEET_ID,SAMPLE_RANGE_NAME) 
 
     write_in_js(sheet,'Netflix')
     write_in_js(sheet,'Hulu')
