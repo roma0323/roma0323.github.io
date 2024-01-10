@@ -1,0 +1,57 @@
+<!-- base.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <title>{% block title %}{% endblock %}</title>
+   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+   <link rel="stylesheet" href="../static/assets/css/main.css" />
+   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+   {% block link %}{% endblock %}
+</head>
+<body>
+
+   {% block content %}
+   {% endblock %}
+
+   <!-- navBar -->
+   <section id="navBar">
+      <div class="container">
+         <nav id="nav">
+            <ul>
+               <li><a class="icon solid fa-home" href="/"><span>Home</span></a></li>
+               <li><a class="icon solid fa-bar-chart" href="/example1"><span>範例1
+                        </span></a></li>
+               <li><a class="icon solid fa-bar-chart" href="/example2"><span>範例2</span></a>
+               </li>
+               <li><a class="icon solid fa-bar-chart" href="/example3"><span>範例3</span></a>
+               </li>
+               <li><a class="icon solid fa-home" href="/style"><span>Style(Yasmine)</span></a></li>
+               <li><a class="icon solid fa-home" href="/rating"><span>Rating(廖老大)</span></a></li>
+               <li><a class="icon solid fa-home" href="/trending"><span>Trending(睿弘)</span></a></li>
+
+            </ul>
+         </nav>
+      </div>
+   </section>
+
+   <!-- Footer -->
+   <footer>
+      <p>
+         © 2023 '23 Spring Data-Viz G4. All rights reserved.
+         <a href="#">
+            <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub"
+               class="github-icon">GitHub Repo
+         </a>
+      </p>
+   </footer>
+
+   	<!-- Scripts -->
+	<script src="../static/assets/js/jquery.min.js"></script>
+	<script src="../static/assets/js/jquery.dropotron.min.js"></script>
+	<script src="../static/assets/js/browser.min.js"></script>
+	<script src="../static/assets/js/breakpoints.min.js"></script>
+	<script src="../static/assets/js/util.js"></script>
+	<script src="../static/assets/js/main.js"></script>
+</body>
+</html>
