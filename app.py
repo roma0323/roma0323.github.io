@@ -107,57 +107,66 @@ def rating():
     SAMPLE_SPREADSHEET_ID = "1kd8gloSg7VE0aXvaSzBOqVDAX3nKfRXsoQBLZz_i1zY"
     SAMPLE_RANGE_NAME = "TV_Shows"
     global sheet
-    if sheet is None:
-        sheet = get_sheet(SAMPLE_SPREADSHEET_ID,SAMPLE_RANGE_NAME) 
+    sheet = get_sheet(SAMPLE_SPREADSHEET_ID,SAMPLE_RANGE_NAME) 
 
-    
-    return render_template('vedioRating/vedioRating.html',
-                            Netflix_IMDb_rate = write_in_js(sheet,'Netflix'),
-                            Hulu_IMDb_rate = write_in_js(sheet,'Hulu'),
-                            Prime_IMDb_rate = write_in_js(sheet,'Prime Video'),
-                            Disney_IMDb_rate = write_in_js(sheet,'Disney+'))
+    netflix_average_rate,hulu_average_rate,disney_average_rate,prime_vedio_average_rate = write_in_js(sheet)
+    return render_template('vedioRating/vedioRating.html',Netflix_IMDb_rate=netflix_average_rate,
+                           Hulu_IMDb_rate=hulu_average_rate,
+                           Prime_IMDb_rate=disney_average_rate,
+                           Disney_IMDb_rate=prime_vedio_average_rate)
 
-def write_in_js(sheet,OTT_platform):
+def write_in_js(sheet):
      # filtered_data = sheet[sheet['IMDb']!= '']
-    
-
-    filtered_data = sheet[(sheet[OTT_platform] == '1') & (sheet['IMDb']!= '')]
-
+    netflix_filtered_data = sheet[(sheet["Netflix"] == '1') & (sheet['IMDb']!= '')]
+    hulu_filtered_data = sheet[(sheet["Hulu"] == '1') & (sheet['IMDb']!= '')]
+    disney_filtered_data = sheet[(sheet["Prime Video"] == '1') & (sheet['IMDb']!= '')]
+    prime_vedio_filtered_data = sheet[(sheet["Disney+"] == '1') & (sheet['IMDb']!= '')]
     # Extract the values from the "IMDb" column that satisfy the conditions
-    imdb_list = filtered_data['IMDb'].tolist()
 
-    number_list = [float(num) for num in imdb_list]
-
-    average_rate = round(sum(number_list) / len(number_list),2)
-    print(f'{OTT_platform} vedio average IMDb rate is:', average_rate)
-
+    netflix_imdb_list = netflix_filtered_data['IMDb'].tolist()
+    netflix_number_list = [float(num) for num in netflix_imdb_list]
+    netflix_average_rate = round(sum(netflix_number_list) / len(netflix_number_list),2)
+    hulu_imdb_list = hulu_filtered_data['IMDb'].tolist()
+    hulu_number_list = [float(num) for num in hulu_imdb_list]
+    hulu_average_rate = round(sum(hulu_number_list) / len(hulu_number_list),2)
+    disney_imdb_list = disney_filtered_data['IMDb'].tolist()
+    disney_number_list = [float(num) for num in disney_imdb_list]
+    disney_average_rate = round(sum(disney_number_list) / len(disney_number_list),2)
+    prime_vedio_imdb_list = prime_vedio_filtered_data['IMDb'].tolist()
+    prime_vedio_number_list = [float(num) for num in prime_vedio_imdb_list]
+    prime_vedio_average_rate = round(sum(prime_vedio_number_list) / len(prime_vedio_number_list),2)
 
     import json
 
     # Convert the Python list to JSON string
-    json_data = json.dumps(imdb_list)
-    variable_exists = False
+    netflix_json_data = json.dumps(netflix_imdb_list)
+    hulu_json_data = json.dumps(hulu_imdb_list)
+    disney_json_data = json.dumps(disney_number_list)
+    prime_vedio_json_data = json.dumps(prime_vedio_imdb_list)
 
-    if OTT_platform=='Prime Video':
-        OTT_platform='prime_video'
-    if OTT_platform=='Disney+':
-        OTT_platform='Disney'    
-
-    with open('./static/assets/js/data.js', 'r') as js_file:
-        for line in js_file:
-            if f'const {OTT_platform}_list =' in line:
-                variable_exists = True
-                break
-                
-    if not variable_exists:
+ 
         # Writing JSON data to a file
-        with open('./static/assets/js/data.js', 'a') as js_file:
-            js_file.write('\n')
-            js_file.write(f'const {OTT_platform}_list = ')
-            js_file.write(json_data)
-            js_file.write(';')
+    with open('./static/assets/js/data.js', 'w') as js_file:
+        js_file.write('\n')
+        js_file.write(f'const Netflix_list = ')
+        js_file.write(netflix_json_data)
+        js_file.write(';')
+        js_file.write('\n')
+        js_file.write(f'const Hulu_list = ')
+        js_file.write(hulu_json_data)
+        js_file.write(';')
+        js_file.write('\n')
+        js_file.write(f'const Disney_list = ')
+        js_file.write(disney_json_data)
+        js_file.write(';')
+        js_file.write('\n')
+        js_file.write(f'const prime_video_list = ')
+        js_file.write(prime_vedio_json_data)
+        js_file.write(';')
+        print(netflix_json_data)
+        print("writinggggg")
 
-    return average_rate        
+    return netflix_average_rate,hulu_average_rate,disney_average_rate,prime_vedio_average_rate 
 
 # 李安之
 
