@@ -22,6 +22,11 @@ SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
 
 # The ID and range of a sample spreadsheet.
 SAMPLE_SPREADSHEET_ID = "1kd8gloSg7VE0aXvaSzBOqVDAX3nKfRXsoQBLZz_i1zY"
+
+# SAMPLE_SPREADSHEET_ID = ""
+SAMPLE_RANGE_NAME = "TV_Shows"
+# SAMPLE_RANGE_NAME = ""
+
 SAMPLE_RANGE_NAME = "TV_Shows"
 sheet = None
 df_netflix_titles = None
@@ -155,6 +160,11 @@ def write_in_js(sheet,OTT_platform):
     return average_rate        
 
 # 李安之
+
+@app.route("/form")
+def form():
+    return render_template('forms/form.html')
+
 @app.route("/perference")
 def perference():
     return render_template('forms/perferForm.html')
