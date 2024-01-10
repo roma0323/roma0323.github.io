@@ -1,0 +1,312 @@
+{% extends 'template.html' %}
+{% block title %}Form{% endblock %}
+{% block link %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+{% endblock %}
+<style>
+    #page-wrapper {
+        width: 75%;
+        margin: 0 auto; /* Center the form horizontally */
+    }
+    form input[type="text"] {
+        width: 50%; /* Change this to 75% if you want them to take 75% of the width */
+    }
+</style>
+{% block content %}
+<!-- Header -->
+<section id="header">
+    <div class="container">
+        <!-- Logo -->
+        <h1 id="logo" style="margin-bottom: 2.5%; line-height: 100%;">Submit Your Data</h1>
+        <h6>Give a rate to Movie or TV-Show</h6>
+        <p style="text-align: center;">
+            在這邊你可以成為我們的社群平台貢獻一份心力，留下自己的評分，讓更多人可以參考你的意見。
+        </p>
+    </div>
+</section>
+
+
+<!-- Main -->
+<div id="page-wrapper">
+
+    <div class=" mb-4 controls" style="margin-top: 1%;text-align: center;">
+        <button id="rate" class="button" data-name="radar_myGraph1">RATE A MOVIE OR TV-SHOW</button>
+        <button id="film" class="button" data-name="radar_myGraph1">GIVE ME A FLIM</button>
+    </div>
+
+
+    <!-- add Amazon form -->
+    <fieldset>
+        
+        <div class="container border rounded" style="text-align: center;">
+            <form action="/addAmazon" method="post" >
+                <h2>Add Movie or TV-Show</h2>
+                <div class="outterText">
+                    <div class="center"><div class="title">film name</div></div>
+                    <input type="text" id="filmName" name="filmName" size="10">
+                </div>
+        
+                <div class="outterText">
+                    <div class="center"><div class="title">director</div></div>
+                    <input type="text" id="director" name="director" size="10">
+                </div>
+        
+                <div class="outterText">
+                    <div class="center"><div class="title">cast</div></div>
+                    <input type="text" id="cast" name="cast" size="10">
+                </div>
+        
+                <div class="outterText">
+                    <div class="center"><div class="title">country</div></div>
+                    <input type="text" id="country" name="country" size="10">
+                </div>
+        
+                <div class="outterText">
+                    <div class="center"><div class="title">release year</div></div>
+                    <input type="text" id="release_year" name="release_year" size="10">
+                </div>
+        
+                <div class="outterText">
+                    <div class="center"><div class="title">rating</div></div>
+                    <input type="text" id="rating" name="rating" size="10">
+                </div>
+                
+                <div class="outterText">
+                    <div class="center"><div class="title">duration</div></div>
+                    <input type="text" id="duration" name="duration" size="10">
+                </div>
+        
+                <div class="outterText">
+                    <div class="center"><div class="title">genre</div></div>
+                    <input type="text" id="genre" name="genre" size="10">
+                </div>
+        
+                <div class="outterText">
+                    <div class="center"><div class="title">description</div></div>
+                    <input type="text" id="description" name="description" size="10">
+                </div>
+        
+                <div class="outter">
+                    <div class="row align-items-start">
+                        <div class="center col"><div class="title">type</div></div>
+                        <div class="radioClass">
+                            <input type="radio" id="typee" name="typee" value="movie">
+                            <label>movie</label>
+                        </div>
+                        <div class="col">
+                            <input type="radio" id="typee" name="typee" value="TVShow">
+                            <label>TV Show</label>
+                        </div>
+                    </div>
+                </div>
+                <input type="submit"value="submit" class="center btn mb-2">
+                </form>
+        </div>
+
+    </fieldset> 
+
+    <!-- add Form -->
+    <fieldset>
+        
+        <div class="container border rounded mt-4" style="text-align: center;">
+            
+            <form action="/add" method="post" >
+                <h2>Rate a Movie or TV-Show</h2>
+                <div class="outter">
+                    <div class="center"><div class="title">film name</div></div>
+                    <input type="text" id="filmName" name="filmName"  size="10">
+                </div>
+        
+                <div class="outter">
+                    <div class="center"><div class="title">year</div></div>
+                    <input type="text" id="year" name="year"  size="10">
+                </div>
+        
+                <div class="outter">
+                    <div class="center"><div class="title">IMDB</div></div>
+                    <input type="text" id="IMDB" name="IMDB" size="10">
+                </div>
+        
+                <div class="outter">
+                    <div class="center"><div class="title">Rotten Tomatoes</div></div>
+                    <input type="text" id="RottenTomatoes" name="RottenTomatoes" size="10">
+                </div>
+        
+                <div class="outter">
+                    <div class="row align-items-start">
+                        <div class="center col-12"><div class="title">age</div></div>
+
+                        <div class="radioClass col">
+                            <input type="radio" id="age" name="age" value="7+">
+                            <label>7~16</label>
+                        </div>
+                
+                        <div class="col">
+                            <input type="radio" id="age" name="age" value="16+">
+                            <label>16~18</label>
+                        </div>
+                
+                        <div class="col">
+                            <input type="radio" id="age" name="age" value="18+">
+                            <label>18+</label>
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="outter">
+                    <div class="row  align-items-start">
+                        <div class="center col-12"><div class="title">platform</div></div>
+                        <div class="col">
+                            <input type="radio" id="platform" name="platform" value="Netflix">
+                            <label for="Netflix">Netflix</label>
+                        </div>
+                
+                        <div class="col">
+                            <input type="radio" id="platform" name="platform" value="Hulu">
+                            <label for="hulu">Hulu</label>
+                        </div>
+                
+                        <div class="col">
+                            <input type="radio" id="platform" name="platform" value="Prime Video">
+                            <label for="primeVideo">Prime Video</label>
+                        </div>
+                        <div class="col">
+                            <input type="radio" name="platform" value="Disney+">
+                            <label for="Disney">Disney+</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="outter mb-2">
+                <input type="submit"value="submit" class="center btn">
+                </div>
+            </form>
+        </div>
+
+    </fieldset>
+
+    <!-- perfer form -->
+    <fieldset>        
+        <div class="container border rounded mt-4" style="text-align: center;">
+            <form id="perferForm" action="/perferGet" method="post" style="display:none;">
+                <h2 class="mb-2">give me a flim</h2>
+                <div class="outterText">
+                    <div class="outter">
+                        
+                        <div class="row align-items-start">
+                            <h4 class="col-12">IMDB</h4>
+                            <div class="radioClass col">
+                                <input type="radio" id="IMDB" name="IMDB" value="9.5">
+                                <label>9.5 or mote</label>
+                            </div>
+                        
+                            <div class = "col">
+                                <input type="radio" id="IMDB" name="IMDB" value="9.0">
+                                <label>9.0 or more</label>
+                            </div>
+                
+                            <div class="radioClass col">
+                                <input type="radio" id="IMDB" name="IMDB" value="8.5">
+                                <label>8.5 or mote</label>
+                            </div>
+                
+                            <div class = "col">
+                                <input type="radio" id="IMDB" name="IMDB" value="8.0">
+                                <label>8.0 or more</label>
+                            </div>
+                        
+                            <div class = "col">
+                                <input type="radio" id="IMDB" name="IMDB" value="0">
+                                <label>no perference</label>
+                            </div>
+                        </div>
+
+                    </div>
+        
+                </div>
+        
+                <div class="outter">
+                    <div class="row align-items-start">
+                        <h4>Age</h4>
+                        <div class="radioClass col">
+                            <input type="radio" id="age" name="age" value="7+">
+                            <label>7~16</label>
+                        </div>
+                    
+                        <div class = "col">
+                            <input type="radio" id="age" name="age" value="16+">
+                            <label>16~18</label>
+                        </div>
+                    
+                        <div class="col">
+                            <input type="radio" id="age" name="age" value="18+">
+                            <label>18+</label>
+                        </div>
+                    </div>
+
+                </div>
+                
+                    <div class="outter">
+                    <div class="row align-items-start">
+                    <h4>Platform</h4>
+                        <div class = "col">
+                            <input type="radio" id="platform" name="platform" value="Netflix">
+                            <label for="Netflix">Netflix</label>
+                        </div>
+                    
+                        <div class = "col">
+                            <input type="radio" id="platform" name="platform" value="Hulu">
+                            <label for="hulu">Hulu</label>
+                        </div>
+                    
+                        <div class = "col">
+                            <input type="radio" id="platform" name="platform" value="Prime Video">
+                            <label for="primeVideo">prime video</label>
+                        </div>
+                        <div class = "col">
+                            <input type="radio" name="platform" value="Disney+">
+                            <label for="Disney">Disney+</label>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="outter mb-2">
+                    <input type="submit"value="submit" class="center btn">
+                    </div>
+            </form>
+        </div>
+    </fieldset>
+</div>
+
+<script>
+
+
+
+    // Get references to the buttons and forms
+    const btn_rate = document.getElementById('rate');
+    const btn_film = document.getElementById('film');
+
+    const amazonForm = document.querySelector('form[action="/addAmazon"]');
+    const addForm = document.querySelector('form[action="/add"]');
+    const perferForm = document.getElementById('perferForm'); // Target the form by its ID
+
+    // Add click event listeners to the buttons
+    btn_rate.addEventListener('click', () => {
+        amazonForm.style.display = 'none';
+        addForm.style.display = 'block';
+        perferForm.style.display = 'none';
+    });
+
+    btn_film.addEventListener('click', () => {
+        amazonForm.style.display = 'none';
+        addForm.style.display = 'none';
+        perferForm.style.display = 'block';
+    });
+
+window.onload = function() {
+    perferForm.style.display = 'none';
+};
+
+</script>
+
+{% endblock %}
