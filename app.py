@@ -22,9 +22,12 @@ SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
 
 # The ID and range of a sample spreadsheet.
 SAMPLE_SPREADSHEET_ID = "1kd8gloSg7VE0aXvaSzBOqVDAX3nKfRXsoQBLZz_i1zY"
+
 # SAMPLE_SPREADSHEET_ID = ""
 SAMPLE_RANGE_NAME = "TV_Shows"
 # SAMPLE_RANGE_NAME = ""
+
+SAMPLE_RANGE_NAME = "TV_Shows"
 sheet = None
 df_netflix_titles = None
 
@@ -195,7 +198,7 @@ def add():
         client = gspread.authorize(creds)
         sheet = client.open('Datavisualization')
         worksheet = sheet.get_worksheet(0)  # Change the index to your desired worksheet
-        platformData=["Netflix","hulu","primeVideo","Disney"]
+        platformData=["Netflix","Hulu","Prime Video","Disney+"]
         platformDataToAdd=[0,0,0,0]
         for i in range (4):
             if platformData[i]==form_data['platform']:
@@ -264,11 +267,11 @@ def perferGet():
                     temp=temp[temp['Age']==ageData[0]]
                 elif form_data['age']==ageData[1]:
                     temp=temp[(temp['Age']==ageData[0])|(temp['Age']==ageData[1])]
-            print(temp.iloc[0])
+            #print(temp.iloc[0])
             
 
             
     except HttpError as err:
         print(err)
-        
-    return render_template('forms/recommondation.html',val=(temp.iloc[0]['Title']))
+    row, col = temp.shape
+    return render_template('forms/recommondation.html',val=(temp.iloc[random.randint(0,row)]['Title']))

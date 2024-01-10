@@ -1,0 +1,57 @@
+<!DOCTYPEhtml>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <meta name="description"content="">
+        <meta name="viewport"content="width=device-width, initial-scale=1">
+        <link rel="stylesheet"href="">
+    </head>
+    <body>
+        <h1>問卷調查</h1>
+        <form action="/submit" method="post" enctype="multipart/form-data">
+            <label for="sex">性別:</label>
+            <input type="radio"id="gender"name="gender"value="Male">
+            <label for="Male">男生</label>
+            <input type="radio"id="gender"name="gender"value="Female">
+            <label for="Female">女生</label>
+            <input type="radio"id="gender"name="gender"value="Unknown">
+            <label for="Unknown">不願透露</label><br><br>
+            <label for="age">年齡:</label>
+            <input type="radio"id="age"name="age"value="5">
+            <label for="5">0~10</label>
+            <input type="radio"id="age"name="age"value="15">
+            <label for="15">11~20</label>
+            <input type="radio"id="age"name="age"value="25">
+            <label for="25">21~30</label>
+            <input type="radio"id="age"name="age"value="35">
+            <label for="35">31~40</label>
+            <input type="radio"id="age"name="age"value="45">
+            <label for="45">41~50</label>
+            <input type="radio"id="age"name="age"value="55">
+            <labelfor="55">51up</label>
+            <br><br>
+            <label for="area">居住地區:</label>
+            <input type="radio"id="area"name="area"value="Taipei">
+            <label for="Taipei">台北</label>
+            <input type="radio"id="area"name="area"value="Taoyuan">
+            <label for="Taoyuan">桃園</label>
+            <input type="radio"id="area"name="area"value="Taichung">
+            <label for="Taichung">台中</label>
+            <input type="radio"id="area"name="area"value="Kaohsiung">
+            <label for="Kaohsiung">高雄</label>
+            <br><br>
+            <label for="quesion">問題: 颱風天的夜晚，你選擇：</label>
+            <input type="radio"id="food"name="food"value="0">
+            <label for="0">出去吃</label>
+            <input  type="radio"id="food"name="food"value="1">
+            <label for="1">叫外送</label>
+            <input type="radio"id="food"name="food"value="2">
+            <label for="2">自己煮</label>
+            <br><br>
+            <input type="submit"value="submit"></form><br>
+            <div><p>{{confirm}}</p></div>
+        </body>
+</html>
+
+
