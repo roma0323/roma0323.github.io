@@ -27,35 +27,38 @@
 	</thead>
 	<tbody>
 		<tr>
-			<td>Student Name</td>
-			<td>Student ID</td>
-			<td>Contribution</td>
-		</tr>
-		<tr>
-			<td><b>陳睿弘</b></td>
-			<td>110403519</td>
-			<td>Trending page , Rating page , 主題發想 , 專案管理<td>
-		</tr>
-		<tr>
-			<td>王冠程</td>
-			<td>110403552</td>
-			<td>Backend｜後段架設, 資料處理, Google sheet API<br>Frontend - Style｜使用者互動</td>
-		</tr>
-		<tr>
-			<td>李晨瑜</td>
-			<td>110403027</td>
-			<td>{分工}</td>
-		</tr>
-		<tr>
-			<td>李安之</td>
-			<td>111403505</td>
-			<td>{分工}</td>
-		</tr>
-		<tr>
-			<td>廖俊傑</td>
-			<td>111707006</td>
-			<td>{分工}</td>
-		</tr>
+							<td><b>Student Name</b></td>
+							<td><b>Student ID</b></td>
+							<td><b>Contribution</b></td>
+						</tr>
+						<tr>
+							<td><b>陳睿弘</b></td>
+							<td>110403519</td>
+							<td>Backend - rATING, TRENDING｜資料處理<br>
+								Frontend - RATING, TRENDING｜使用者互動,分析圖表<td>
+						</tr>
+						<tr>
+							<td>王冠程</td>
+							<td>110403552</td>
+							<td>Backend｜後段架設, 資料處理, Google sheet API<br>
+								Frontend - Style｜使用者互動</td>
+						</tr>
+						<tr>
+							<td>李晨瑜</td>
+							<td>110403027</td>
+							<td>Frontend - Style｜Pie Chart, Radar Chart, Bar Chart、其中的分析及行銷建議</td>
+						</tr>
+						<tr>
+							<td>李安之</td>
+							<td>111403505</td>
+							<td>Backend｜後段架設, 資料處理, Google sheet API
+								Frontend - Style｜使用者互動</td>
+						</tr>
+						<tr>
+							<td>廖俊傑</td>
+							<td>111707006</td>
+							<td>Frontend - RATING｜ 資料收集、發想、觀察</td>
+						</tr>
 	</tbody>
 </table>
 
