@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-=======
 
->>>>>>> b9b931a8b1c921cea73455344e9e9c403cc674d1
 {% extends 'template.html' %}
 {% block title %}Home Page{% endblock %}
 
@@ -11,7 +8,7 @@
 	<section id="header">
 		<div class="container">
 			<!-- Logo -->
-			<h1 id="logo" style="margin-bottom: 2.5%; line-height: 100%;">Style Compare</h1>
+			<h1 id="logo" style="margin-bottom: 2.5%; line-height: 100%;"><a href="/index.html">Style Compare</a></h1>
 			<h2>各串流平台之分析</h2>
 			<p style="text-align: center;">
 				此頁使用了4份以各串流平台為出發點的資料 分別為：<br>
@@ -35,9 +32,13 @@
 						</h2>
 					</header>
 					<div id="pie_myGraph"></div>
+					<h4 style="font-size: larger; margin-bottom: 2%;">
+						各平台電影和影集的比例
+					</h4>
 					<p style="text-align: center;">
 						每個觀眾的喜好不同，有些人喜歡影集，而有些人喜歡電影。<br><br>
 						在行銷學課程中學到「類異點（POD）」，在分析這幾份資料前，我們猜測或許有串流平台會主打電影或影集成為讓他們從多個競爭者中突出的方式，來吸引特定的觀眾族群。<br><br>
+						將資料視覺化之後發現<b>Netflix的TV Show比例大於Movie</b>，Netflix推出了許多實境節目和原創影集來讓觀眾一集接著一集觀看，<b>增加觀眾的品牌忠誠度</b>。另一方面，<b>Disney Plus的Movie比例大於TV Show</b>，思考背後的原因應該是因爲Disney旗下<b>還有Pixar、MARVEL、Star Wars以電影為主的公司</b>，而也這是他們的類異點。<br>
 					</p>
 					<hr color="#FFF" style="align-items: center;">
 				</article>
@@ -55,7 +56,7 @@
 					</header>
 					<div id="radar_myGraph1"></div>
 					<h4 style="font-size: larger; margin-bottom: 2%;">
-						各平台電影和影集種類
+						各平台最多的五種類型
 					</h4>
 					<!-- radar chart 的容器 -->
 					<div class="radar-chart-container chart"></div>
@@ -71,18 +72,18 @@
 					<br><br>
 					<!-- <p style="font-weight: bold;" style="padding-top: 10em;">圖表分析：</p> -->
 					<p style="text-align: center;">
-						我們選擇各串流平台上最多的五個種類以雷達圖呈現，可以明顯地看出各家公司所主打的類別及優勢：<br><br>
-						❶ Netflix｜從雷達圖上看到有「International」的佔了40%，表示Netflix積極在擴展他的觀眾，利用擴大市占率來擁有競爭優勢。<br>
-						❷ Disney Plus｜「Family」、「Animation」、「Animals & Nature」都是闔家觀賞的，因此我們能更確定迪士尼的目標客群是家庭、小孩。<br><br>
-						❸ Hulu｜<br><br>
-						❹ Prime Video｜<br><br>
+						我們選擇各串流平台上最多的五個種類以雷達圖呈現，可以明顯地看出各家公司所<b>主打的類別及優勢</b>：<br><br>
+						❶ Netflix｜有兩個類型都與「International」有關，表示Netflix積極在擴展他的觀眾版圖，利用<b>擴大市占率來擁有競爭優勢</b>。<br>
+						❷ Disney Plus｜Family、Animation、Animals & Nature都是闔家觀賞的，因此我們能<b>更確定迪士尼的目標客群是家庭、小孩</b>。<br>
+						❸ Hulu｜Hulu在ALL雷達圖上的面積小於其他三者，表示他的片量小於其他平台，這是<b>該平台的劣勢</b>。<br>
+						❹ Prime Video｜Prime Video的優勢在於<b>電影及影集的數量遠大於其他平台的數量</b>，代表觀眾在選擇訂閱哪個平台時很有可能因為數量而被吸引。<br><br>
 					</p>
-
 				</article>
 			</div>
 		</div>
-		
 	</section>
+
+	<br><br><br>
 
 	<section id="main2">
 		<div class="container">
@@ -110,11 +111,29 @@
 					<div id="bar_myGraph"></div>
 					<!-- <p style="font-weight: bold;">圖表分析：</p> -->
 					<p style="text-align: center;">
-						(觀察哪個種類是類異點 可吸引到那個客群)：<br><br>
-						❶ Netflix｜從雷達圖上看到有「International」的佔了40%，表示Netflix積極在擴展他的觀眾，利用擴大市占率來擁有競爭優勢。<br>
-						❷ Disney Plus｜「Family」、「Animation」、「Animals & Nature」都是闔家觀賞的，因此我們能更確定迪士尼的目標客群是家庭、小孩。<br><br>
-						❸ Hulu｜<br><br>
-						❹ Prime Video｜<br><br>
+						<br><br>細看電影和影集的種類以找到各平台的優勢：<br><br>
+						❶ Netflix｜由於分類方式與其他三種平台不同，因此鮮少有可以放在一起的比較，不過從細項來看，可以看到有以不同語言為分類的種類，因此可以看見Netflix在擴大語區的企圖心。<br>
+						❷ Disney Plus｜以數量而言，Family、Animation、Animals & Nature等類型佔有優勢。<br>
+						❸ Hulu｜有別於其他平台，Hulu有Family、Kids、Teen的類型，這可以成為<b>該平台的類異點</b>。<br>
+						❹ Prime Video｜以數量而言，Drama、Comedy、Romance等類型佔有優勢。<br><br><br><br><br>
+					</p>
+				</article>
+			</div>
+		</div>
+	</section>
+
+	<section id="main3">
+		<div class="container">
+			<div id="content1">
+				<!-- Post -->
+				<article class="box post">
+					<h4 style="font-size: larger; margin-bottom: 2%;">
+						商業建議
+					</h4>
+					<p style="text-align: center;">
+						❶ Netflix｜可以繼續專注在拓展國際的市場、提高市佔率。為了達到這個效果，我會建議Netflix做更多的<b>「在地化」的線上線下行銷</b>，針對不同地區的觀眾推出不同風格的影集，可以試圖在不同地區獨佔市場。<br><br>
+						❷ Disney Plus＆Hulu｜Disney Plus前幾年已買下Hulu，因此我認為可以利用Disney Plus的優勢——Disney、Pixar、MARVEL、Star Wars、National Geography，<b>打造一個針對家庭、環境、電影為主的整合平台</b>。<br><br>
+						❸ Prime Video｜他的最大優勢就是他的Movie和TV Show<b>數量遠大於其他平台</b>，因此可以繼續保持。另一方面我認為可以<b>擴展運動相關的影集或比賽播放版權</b>，這是在其他平台較少看到的類別。<br><br>
 					</p>
 				</article>
 			</div>
@@ -158,15 +177,15 @@ let trace1_1 = {};
 trace1_1.type = "pie";
 trace1_1.title = "Netflix";
 trace1_1.hole = 0.5;
-trace1_1.labels = [];
+trace1_1.labels = ["TV Show","Movie"];
 trace1_1.values = [];
-trace1_1.marker = { colors: ['#B81D24', '#221F1F'] };
+trace1_1.marker = { colors: ['#221F1F','#B81D24'] };
 trace1_1.domain = {
     row:0,
     column:0
 };
 for(let x = 0; x < evaluation_ratio1_1.length; x++){
-    trace1_1.labels[x] = evaluation_ratio1_1[x]['name'];
+    // trace1_1.labels[x] = evaluation_ratio1_1[x]['type'];
     trace1_1.values[x] = evaluation_ratio1_1[x]['count'];
 }
 
@@ -174,7 +193,7 @@ let trace1_2 = {};
 trace1_2.type = "pie";
 trace1_2.title = "Disney Plus";
 trace1_2.hole = 0.5;
-trace1_2.labels = [];
+trace1_2.labels = ["Movie","TV Show"];
 trace1_2.values = [];
 trace1_2.marker = { colors: ['#142850','#221F1F'] };
 trace1_2.domain = {
@@ -183,7 +202,7 @@ trace1_2.domain = {
 };
 
 for(let x=0; x<evaluation_ratio1_2.length; x++){
-    trace1_2.labels[x] = evaluation_ratio1_2[x]['name'];
+    // trace1_2.labels[x] = evaluation_ratio1_2[x]['type'];
     trace1_2.values[x] = evaluation_ratio1_2[x]['count'];
 }
 
@@ -191,16 +210,16 @@ let trace1_3 = {};
 trace1_3.type = "pie";
 trace1_3.title = "Hulu";
 trace1_3.hole = 0.5;
-trace1_3.labels = [];
+trace1_3.labels = ["Movie","TV Show"];
 trace1_3.values = [];
-trace1_3.marker = { colors: ['#1ce783', '#221F1F'] };
+trace1_3.marker = { colors: ['#91B493','#221F1F'] };
 trace1_3.domain = {
     row:0,
     column:2
 };
 
 for(let x = 0; x < evaluation_ratio1_3.length; x++){
-    trace1_3.labels[x] = evaluation_ratio1_3[x]['name'];
+    // trace1_3.labels[x] = evaluation_ratio1_3[x]['type'];
     trace1_3.values[x] = evaluation_ratio1_3[x]['count'];
 }
 
@@ -208,16 +227,16 @@ let trace1_4 = {};
 trace1_4.type = "pie";
 trace1_4.title = "Prime Video";
 trace1_4.hole = 0.5;
-trace1_4.labels = [];
+trace1_4.labels = ["Movie","TV Show"];
 trace1_4.values = [];
-trace1_4.marker = { colors: ['#3C78B4', '#221F1F'] };
+trace1_4.marker = { colors: ['#3C78B4','#221F1F'] };
 trace1_4.domain = {
     row:0,
     column:3
 };
 
 for(let x = 0 ; x < evaluation_ratio1_4.length; x++){
-    trace1_4.labels[x] = evaluation_ratio1_4[x]['name'];
+    // trace1_4.labels[x] = evaluation_ratio1_4[x]['type'];
     trace1_4.values[x] = evaluation_ratio1_4[x]['count'];
 }
 
