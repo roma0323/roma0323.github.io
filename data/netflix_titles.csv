@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 ,Title,Year,Age,IMDb,Rotten Tomatoes,Netflix,Hulu,Prime Video,Disney+,type
 0,Breaking Bad,2008,18+,9.5,96%,1,0,0,0,1
 1,Stranger Things,2016,16+,8.8,93%,1,0,0,0,1
@@ -5611,6 +5612,8 @@
 5608,Wild Russia,2018,,,,0,0,0,1,1
 5609,Love & Vets,2017,,,,0,0,0,1,1
 =======
+=======
+>>>>>>> b9b931a8b1c921cea73455344e9e9c403cc674d1
 ,Title,Year,Age,IMDb,Rotten Tomatoes,Netflix,Hulu,Prime Video,Disney+,type
 0,Breaking Bad,2008,18+,9.5,96%,1,0,0,0,1
 1,Stranger Things,2016,16+,8.8,93%,1,0,0,0,1
@@ -11222,5 +11225,8 @@
 5607,Paradise Islands,2017,,,,0,0,0,1,1
 5608,Wild Russia,2018,,,,0,0,0,1,1
 5609,Love & Vets,2017,,,,0,0,0,1,1
+<<<<<<< HEAD
+>>>>>>> b9b931a8b1c921cea73455344e9e9c403cc674d1
+=======
 >>>>>>> b9b931a8b1c921cea73455344e9e9c403cc674d1
 5610,United States of Animals,2016,,,,0,0,0,1,1

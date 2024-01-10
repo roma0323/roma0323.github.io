@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 ID,Title,Year,Age,IMDb,Rotten Tomatoes,Netflix,Hulu,Prime Video,Disney+,Type,Directors,Genres,Country,Language,Runtime
 1,Inception,2010,13+,8.8,87%,1,0,0,0,0,Christopher Nolan,"Action,Adventure,Sci-Fi,Thriller","United States,United Kingdom","English,Japanese,French",148
 2,The Matrix,1999,18+,8.7,87%,1,0,0,0,0,"Lana Wachowski,Lilly Wachowski","Action,Sci-Fi",United States,English,136
@@ -16745,6 +16746,8 @@ ID,Title,Year,Age,IMDb,Rotten Tomatoes,Netflix,Hulu,Prime Video,Disney+,Type,Dir
 16743,Man Among Cheetahs,2017,,6.6,,0,0,0,1,0,Richard Slater-Jones,Documentary,United States,English,
 16744,In Beaver Valley,1950,,,,0,0,0,1,0,James Algar,"Documentary,Short,Family",United States,English,32
 =======
+=======
+>>>>>>> b9b931a8b1c921cea73455344e9e9c403cc674d1
 ID,Title,Year,Age,IMDb,Rotten Tomatoes,Netflix,Hulu,Prime Video,Disney+,Type,Directors,Genres,Country,Language,Runtime
 1,Inception,2010,13+,8.8,87%,1,0,0,0,0,Christopher Nolan,"Action,Adventure,Sci-Fi,Thriller","United States,United Kingdom","English,Japanese,French",148
 2,The Matrix,1999,18+,8.7,87%,1,0,0,0,0,"Lana Wachowski,Lilly Wachowski","Action,Sci-Fi",United States,English,136
@@ -33490,4 +33493,7 @@ ID,Title,Year,Age,IMDb,Rotten Tomatoes,Netflix,Hulu,Prime Video,Disney+,Type,Dir
 16742,Sharks of Lost Island,2013,,5.7,,0,0,0,1,0,Neil Gelinas,Documentary,United States,English,
 16743,Man Among Cheetahs,2017,,6.6,,0,0,0,1,0,Richard Slater-Jones,Documentary,United States,English,
 16744,In Beaver Valley,1950,,,,0,0,0,1,0,James Algar,"Documentary,Short,Family",United States,English,32
+<<<<<<< HEAD
+>>>>>>> b9b931a8b1c921cea73455344e9e9c403cc674d1
+=======
 >>>>>>> b9b931a8b1c921cea73455344e9e9c403cc674d1
